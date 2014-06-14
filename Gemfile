@@ -34,3 +34,4 @@ gem "typhoeus", "~> 0.6"
 gem "unicorn", "~> 4.8"
 gem 'whenever', :require => false
 gem "yaml_db", "~> 0.2", {:github=>"jetthoughts/yaml_db", :ref=>"fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba"}
+gem "mongoid"
