@@ -6,5 +6,7 @@ class GameController < ApplicationController
   end
 
   def create
+    player_name = params[:player_name]
+    player_color = params[:player_color]
   end
 end

@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   root 'game#welcome'
 
   resources :games
+  get 'welcome' => 'game#welcome'
   resources :maps
   resources :choices
-  get 'welcome' => 'game#welcome'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
