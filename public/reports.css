@@ -1,0 +1,79 @@
+body {
+    /*background-image:url('kitten.jpg');*/
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#page {
+    width: 80%;
+    height: 100%;
+    margin-left: 20%
+}
+
+#graph {
+    width: 100%;
+    align: right;
+    height: 100%;
+}
+
+#menu.main li a:hover {    
+    background: #333;
+}
+
+#menu a:hover {    
+    color: #999;
+    background: #333;
+}
+
+#menu.main {
+    font-family: sans-serif;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+#menu {
+    background: #242424;
+    border-bottom: 1px solid #111;
+    border-left: 0;
+    border-right: 1px solid #3E444C;
+    bottom: 0;
+    box-shadow: 0 1px 0 #383838;
+    border: 0;
+    height: 100%;
+    margin: 0;
+    outline: 1px solid #101214;
+    padding: 0;
+    position: fixed;
+    text-shadow: 0px -1px 0px #000;
+    top: 0;
+    width: 20%;
+}
+
+#menu a {
+    border: 0;
+    color: #999;
+    display: block;
+    font-family: sans-serif;
+    font-size: 80%;
+    line-height: 1.5em;
+    outline: 1px solid #101214;
+    padding: .6em 0 .6em .6em;
+    text-decoration: none;
+}
+
+#menu ul {
+    border: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    visibility: visible;
+}
+
+#menu .heading {
+    color: #FFF;
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: 0;
+    margin-left: 0;
+}
