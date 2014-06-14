@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'game#welcome'
+  root 'games#welcome'
 
   resources :games
-  get 'welcome' => 'game#welcome'
+  get 'welcome' => 'games#welcome'
   resources :maps
   resources :choices
 
