@@ -31,11 +31,15 @@ h1,h2,h3, h4, h5
 }
 nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 {
-	background-color: #332222;
+	background-color: #1CAAA2;
 }
 .top-bar-section li:not(.has-form) a:not(.button):hover
 {
-	background-color: #4D1A1A;
+	background-color: #1CAAA2;
+}
+nav.top-bar
+{
+	border-bottom: 3px solid white;
 }
 #content
 {
@@ -82,7 +86,8 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 }
 .button.red
 {
-	background-color:#1A2B2B;
+	background-color:#1CAAA2;
+	font-family: 'Lemon'
 }
 .leaflet-clickable, .leaflet-container
 {
