@@ -1,16 +1,16 @@
-<% if @player[:pending_choices].length > 0 %>
+<% if @session[:pending_choices].length > 0 %>
 	<h2>Oh no! You Didn't Quite Make it!</h2>
 	<div class="small-12 medium-8 columns">
 		<div class="small-12 panel radius">
-			<p>Sorry <%= @player[:name] %>!</p>
-			<p>After <%= @player[:completed_choices].length %> days on the road, you don't have enough money to continue.</p>
+			<p>Sorry <%= @session[:name] %>!</p>
+			<p>After <%= @session[:completed_choices].length %> days on the road, you don't have enough money to continue.</p>
 			<%= link_to "Give it Another Go", welcome_path, {class: "button red radius"}  %>
 		</div>
 	</div>
 	<div class="small-12 medium-4 columns">
 		<div class="small-12 panel radius">
-			<h6>Environmental Impacts: <%= @player[:environment] %></h6>
-			<h6>Money: <%= @player[:money] %></h6>
+			<h6>Environmental Impacts: <%= @session[:environment] %></h6>
+			<h6>Money: <%= @session[:money] %></h6>
 		</div>
 	</div>
 
@@ -18,16 +18,16 @@
 	<h2>Congratulations! You Made It!</h2>
 	<div class="small-12 medium-8 columns">
 		<div class="small-12 panel radius">
-			<p>Great job <%= @player[:name] %>!</p>
-			<p>You made it to New York with $<%= @player[:money] %> left. But keep in mind, this is about more than just you. The decisions you made will have lasting effects on all of the future generations.</p>
+			<p>Great job <%= @session[:name] %>!</p>
+			<p>You made it to New York with $<%= @session[:money] %> left. But keep in mind, this is about more than just you. The decisions you made will have lasting effects on all of the future generations.</p>
 			<p>To give you the chance to see what those effects might be, try playing as the next generation!</p>
 			<%= link_to "Proceed to the next generation", welcome_path, {class: "button red radius"}  %>
 		</div>
 	</div>
 	<div class="small-12 medium-4 columns">
 		<div class="small-12 panel radius">
-			<h6>Environmental Impacts: <%= @player[:environment] %></h6>
-			<h6>Money: <%= @player[:money] %></h6>
+			<h6>Environmental Impacts: <%= @session[:environment] %></h6>
+			<h6>Money: <%= @session[:money] %></h6>
 		</div>
 	</div>
 <% end %>

@@ -1,14 +1,14 @@
 <div class="small-12 medium-7 columns">
 	<div class="small-12 panel radius">
-		<h1 class="text-center">Create Your Player!</h1>
+		<h1 class="text-center">Create Your session!</h1>
 		<%= form_tag("/games", method: "post") do %>
 		  <div class="small-9 columns">
-		  	<%= label_tag(:player_name, "Player Name") %>
-		  	<%= text_field_tag(:player_name) %>
+		  	<%= label_tag(:session_name, "session Name") %>
+		  	<%= text_field_tag(:session_name) %>
 		  </div>
 		  <div class="small-3 columns">
-			  <%= label_tag(:player_color, "Car Color") %>
-			  <%= text_field_tag(:player_color, "#FFFFFF") %>
+			  <%= label_tag(:session_color, "Car Color") %>
+			  <%= text_field_tag(:session_color, "#FFFFFF") %>
 		  </div>
 		  <div class="text-center"><%= submit_tag("Hit the Road!", {class: "button red radius"}) %></div>
 		<% end %>
@@ -25,7 +25,7 @@
 	</div>
 </div>
 <script>
-	$("#player_color").spectrum({
+	$("#session_color").spectrum({
 	    color: "#fff"
 	});
 </script>

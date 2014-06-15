@@ -10,7 +10,7 @@
 </head>
 <body>
 <%= javascript_tag do %>
-  window.player = <%= raw @player.to_json if @player  %>
+  window.session = <%= raw @session.to_json if @session%>
 <% end %>
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
