@@ -1,3 +1,15 @@
+<% if @out_of_money %>
+  <div id="out-of-money" class="reveal-modal" data-reveal>
+    <h2 style="color: #000;">You're out of money. EPIC FAIL</h2>
+    <%= link_to "Wrap it up", finished_path(player_id: @player[:id]) %>
+  </div>
+  <%= javascript_tag do %>
+    $(function() {
+      $("#out-of-money").foundation("reveal", "open");
+      console.log("bla");
+    });
+  <% end %>
+<% end %>
 <div class="small-12 medium-8">
   <div class="small-12 columns radius" id="map">
   </div>
@@ -50,6 +62,7 @@
           <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
           <% description = option[:description]  %>
           <% description += " ($#{option[:outcome][:cost]})" if option[:outcome][:cost]%>
+          <% description += " (you don't have enough money!)" if disabled  %>
           <%= label_tag "option_#{option[:id]}", description %>
 	    <br/>
 	  <% end %>
