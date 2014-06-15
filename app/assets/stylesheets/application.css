@@ -113,4 +113,10 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 	min-height:200px;
 	padding-top:20px;
 	margin-top:20px;
+	color:#fbfbfb;
+}
+.footer a
+{
+	color:#fbfbfb;
+	text-decoration: underline;
 }
