@@ -29,12 +29,8 @@ gem "rails", "~> 4.1"
 gem "haml-rails", "~> 0.5"
 gem "jbuilder", "~> 1.5"
 gem "lograge"
-gem 'mongoid', '4.0.0.rc1', github: 'mongoid/mongoid'
 gem "pg", "~> 0.17"
 gem 'redis-store'
-gem "sidekiq", "~> 3.0"
-gem "sinatra", "~> 1.4"
-gem "twitter-bootstrap-rails"
 gem "typhoeus", "~> 0.6"
 gem "unicorn", "~> 4.8"
 gem 'whenever', :require => false
