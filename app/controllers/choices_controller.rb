@@ -25,6 +25,7 @@ class ChoicesController < ApplicationController
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
     @player[:money] -= selected_option[:outcome][:cost] if selected_option[:outcome][:cost]
+    @player[:money] -= @player[:car][:gas_cost] if @player[:car]
     @player[:miles_remaining] -= choice[:location][:mileage]
     @player[:environment] += selected_option[:outcome][:environment] if selected_option[:outcome][:environment]
     @player[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]

@@ -51,7 +51,10 @@ class GamesController < ApplicationController
             id: 1,
             description: "Prius",
             outcome: {
-              car: "prius",
+              car: {
+                name: "prius",
+                gas_cost: 50
+              },
               cost: 2700
             }
           },
@@ -59,7 +62,10 @@ class GamesController < ApplicationController
             id: 2,
             description: "Camry",
             outcome: {
-              car: "camry",
+              car: {
+                name: "camry",
+                gas_cost: 200
+              },
               cost: 1000
             }
           },
@@ -67,7 +73,10 @@ class GamesController < ApplicationController
             id: 3,
             description: "Volt",
             outcome: {
-              car: "volt",
+              car: {
+                name: "volt",
+                gas_cost: 25
+              },
               cost: 4990
             }
           }
