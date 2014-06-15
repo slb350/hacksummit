@@ -12,5 +12,6 @@ class ChoicesController < ApplicationController
   end
 
   def create
+
   end
 end
