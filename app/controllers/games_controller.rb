@@ -33,15 +33,19 @@ class GamesController < ApplicationController
     session = {}
     session[:id] = SecureRandom.uuid
     if @parent_session
+      session[:name] = @parent_session[:name]
+      session[:color] = @parent_session[:color]
       session[:parent_session_id] = @parent_session[:id]
       session[:iteration] = @parent_session[:iteration] + 1
+      session[:initial_environment] = @parent_session[:environment]
+    else
+      session[:name] = params[:session_name]
+      session[:color] = params[:session_color]
+      session[:iteration] = 1
+      session[:initial_environment] = 1
     end
-    session[:iteration] ||= 1
-    session[:name] = params[:session_name] || "Player 1"
-    session[:color] = params[:session_color] || "#6E913F"
     session[:starting_money] = 1000
     session[:money] = session[:starting_money]
-    session[:initial_environment] = @parent_session.try(:[], :environment) || 1
     session[:environment] = session[:initial_environment]
     session[:total_miles] = choices.sum{|c| c[:location][:mileage] }
     session[:miles_remaining] = session[:total_miles]
