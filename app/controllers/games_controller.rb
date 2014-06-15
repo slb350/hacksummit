@@ -1,4 +1,8 @@
 class GamesController < ApplicationController
+  def splash
+    #all the other apps we would build.
+  end
+
   def welcome
   end
 
