@@ -138,7 +138,7 @@ i.fa-facebook-square, i.fa-twitter-square {
 
 .alert-box.warning h1, .alert-box.warning h2, .alert-box.warning h3, .alert-box.warning h4, .alert-box.warning h5, .alert-box.warning h6 {
     color: white
-    }
+}
 .disabled .app-icon i
 {
     color:rgba(1, 1, 1, .5);
@@ -149,4 +149,12 @@ i.fa-facebook-square, i.fa-twitter-square {
     text-decoration: none;
     color:#474949;
     cursor:not-allowed;
+}
+i.popover
+{
+    height:10px;
+    width:10px;
+    border-radius:5px;
+    background-color:#474949;
+    color:#ffffff;
 }
