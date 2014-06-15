@@ -45,7 +45,7 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-  config.lograge.enabled = true
-  config.lograge.log_format = :graylog2
-  config.logger = ColorfulLogger.new("/home/steve/logs/#{Rails.env}.log", 8, 4 * 1024 ** 2)
+  #config.lograge.enabled = true
+  #config.lograge.log_format = :graylog2
+  #config.logger = ColorfulLogger.new("/home/steve/logs/#{Rails.env}.log", 8, 4 * 1024 ** 2)
 end
