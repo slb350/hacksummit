@@ -17,12 +17,14 @@ class GamesController < ApplicationController
       OpenStruct.new(name: "Camry"),
       OpenStruct.new(name: "Volt")
     ]
+
+    @parent_session_id = params[:parent_session_id]
   end
 
   def create
     choices = choice_template
 
-    @parent_session = $redis.get(params[:parent_session_id]) if params[:parent_session_id]
+    @parent_session = get_session(params[:parent_session_id]) if params[:parent_session_id]
 
     session = {}
     session[:id] = SecureRandom.uuid
@@ -30,7 +32,7 @@ class GamesController < ApplicationController
     session[:color] = params[:session_color] || "#6E913F"
     session[:starting_money] = 1000
     session[:money] = session[:starting_money]
-    session[:environment] = @parent_session.try(:environment) || 0
+    session[:environment] = @parent_session.try(:[], :environment) || 0
     session[:total_miles] = choices.sum{|c| c[:location][:mileage] }
     session[:miles_remaining] = session[:total_miles]
     session[:pending_choices] = choices

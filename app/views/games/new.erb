@@ -2,6 +2,7 @@
 	<div class="small-12 panel radius">
 		<h1 class="text-center">Create Your player!</h1>
 		<%= form_tag("/games", method: "post") do %>
+          <%= hidden_field_tag :parent_session_id, @parent_session_id %>
 		  <div class="small-9 columns">
 		  	<%= label_tag(:session_name, "session Name") %>
 		  	<%= text_field_tag(:session_name) %>
