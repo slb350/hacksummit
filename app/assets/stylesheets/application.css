@@ -113,6 +113,7 @@ i.fa-facebook-square, i.fa-twitter-square
 .progress
 {
 	background-color: #FFFFFF;
+	border: 1px solid #d8d8d8;
 }
 .footer
 {
