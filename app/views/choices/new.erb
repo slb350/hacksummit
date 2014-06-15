@@ -48,7 +48,9 @@
 	  <% @choice[:options].each do |option| %>
           <% disabled = true if option[:outcome][:cost] and @player[:money] < option[:outcome][:cost] %>
           <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
-	    <%= label_tag("option_#{option[:id]}", option[:description]) %>
+          <% description = option[:description]  %>
+          <% description += " ($#{option[:outcome][:cost]})" if option[:outcome][:cost]%>
+          <%= label_tag "option_#{option[:id]}", description %>
 	    <br/>
 	  <% end %>
 	  <%= submit_tag("Submit") %>
