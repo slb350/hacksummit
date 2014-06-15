@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def current_user
+  def player
     params[:user_id]
+  end
+
+  def redis
+    Redis.new
   end
 end

@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
   def show
-    @current_user = current_user
+    @player = player
   end
 end

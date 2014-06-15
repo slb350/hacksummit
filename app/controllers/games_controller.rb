@@ -13,17 +13,17 @@ class GamesController < ApplicationController
   def create
     choices = choice_template
 
-    player = {}.tap do |p|
-      p[:id] = SecureRandom.uuid
-      p[:name] = params[:player_name] || "Player 1"
-      p[:color] = params[:player_color] || "#6E913F"
-      p[:money] = 100
-      p[:miles_remaining] = choices.sum{|c| c[:location][:mileage] }
-      p[:pending_choices] = choices
-      p[:completed_choices] = []
-    end
+    player = {}
+    player[:id] = SecureRandom.uuid
+    player[:name] = params[:player_name] || "Player 1"
+    player[:color] = params[:player_color] || "#6E913F"
+    player[:money] = 100
+    player[:miles_remaining] = choices.sum{|c| c[:location][:mileage] }
+    player[:pending_choices] = choices
+    player[:completed_choices] = []
 
     # now persist player
+    redis.set(player[:id], player.to_json)
   end
 
   protected
