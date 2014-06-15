@@ -9,14 +9,14 @@
       <div id="money">
         <h6>Money</h6>
         <div class="progress radius">
-          <span class="meter" style="width:20%;background:green"></span>
+            <span class="meter" style="width:<%= @money_percent %>%;background:green"></span>
         </div>
         <h6>$<%= @player[:money] %></h6>
       </div>
       <div id="progress">
         <h6>Progress</h6>
         <div class="progress radius">
-          <span class="meter" style="width:60%;"></span>
+            <span class="meter" style="width:<%= @progress_percent %>%;"></span>
         </div>
         <h6><%= @player[:miles_remaining] %> mi.</h6>
       </div>

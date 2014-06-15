@@ -21,7 +21,8 @@ class GamesController < ApplicationController
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
     player[:money] = 100
-    player[:miles_remaining] = choices.sum{|c| c[:location][:mileage] }
+    player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
+    player[:miles_remaining] = player[:total_miles]
     player[:pending_choices] = choices
     player[:completed_choices] = []
 
@@ -79,7 +80,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              resource: -2,
+              resource: -20,
               environment: 3
             }
           }
