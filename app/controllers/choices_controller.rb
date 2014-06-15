@@ -8,11 +8,16 @@ class ChoicesController < ApplicationController
       (@session[:money].to_f / @session[:starting_money]).round(2)*100
 
     @choice[:options].each do |o|
-      o[:outcome][:cost] = (o[:outcome][:cost] * (1 + (@session[:initial_environment].to_f / 100))).to_i
+      cost_multi = 1 + (@session[:initial_environment].to_f / 100)
+      cost_multi *= o[:outcome][:cost_impact].to_f if o[:outcome][:cost_impact]
+      o[:outcome][:cost] = (o[:outcome][:cost] * cost_multi.to_f).to_i if cost_multi > 0
     end
 
     costs = @choice[:options].map{|o| o[:outcome][:cost]}.reject{|c| !c}
-    if rand < 0.75 and @choice[:location][:type] != "start"
+    event_prob = 0.1
+    event_prob = (@session[:initial_environment].to_f / 100) * 2
+
+    if rand < event_prob and @choice[:location][:type] != "start"
       @event = random_event
       @event[:cost] = (@event[:cost] * (1 + (@session[:initial_environment].to_f / 100))).to_i
       @session[:money] -= @event[:cost]
@@ -31,7 +36,7 @@ class ChoicesController < ApplicationController
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
     @session[:money] -= selected_option[:outcome][:cost] if selected_option[:outcome][:cost]
-    @session[:money] -= @session[:car][:gas_cost] if @session[:car]
+    @session[:money] -= @session[:car][:gas_cost] * @session[:initial_environment].to_f / 100 * 2 if @session[:car]
     @session[:miles_remaining] -= choice[:location][:mileage]
     @session[:environment] += selected_option[:outcome][:environment] if selected_option[:outcome][:environment]
     @session[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]
