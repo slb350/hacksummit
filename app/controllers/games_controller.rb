@@ -5,6 +5,9 @@ class GamesController < ApplicationController
 
   def welcome
     @parent_session_id = params[:parent_session_id]
+    if @parent_session_id
+      redirect_to new_game_path, parent_session_id: @parent_session_id and return
+    end
   end
 
   def finished

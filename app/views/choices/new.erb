@@ -84,11 +84,11 @@
           <% description += " (you don't have enough money!)" if disabled  %>
           <%= label_tag "option_#{option[:id]}", {for: 'option_id_' + option[:id].to_s} do %>
               <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
-              <% if option[:environmental_impact_description]  %>
+              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
                 <span data-tooltip class="has-tip" title="<%= option[:environmental_impact_description]  %>">
               <% end %>
               <%= description %>
-              <% if option[:environmental_impact_description]  %>
+              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
                 </span>
               <% end %>
           <% end %>
