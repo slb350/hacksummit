@@ -16,16 +16,7 @@ namespace :deploy do
 desc 'Restart Rails Services'
   task :rails_restart do
     on roles(:all), in: :sequence, wait: 5 do
-      command "cd /home/#{fetch(:user)}/apps/#{fetch(:application)}; rails s"
-    end
-  end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+      execute "nohup cd /home/#{fetch(:user)}/apps/#{fetch(:application)}/current/; rails s &"
     end
   end
 
