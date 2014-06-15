@@ -61,9 +61,19 @@
 
   var map = L.map('map', {scrollWheelZoom:false, doubleClickZoom:false, boxZoom:false, touchZoom:false, keyboard:false, dragging:false})
       .addLayer(mapboxTiles)
-      .setView([37.7833, -122.4167], 10);
+      .setView([37.7833, -122.4167], 8);
   var playerIcon = L.divIcon({className:'player-icon'});
   var playerMarker = L.marker([37.7833, -122.4167], {icon:playerIcon}).addTo(map);
-  var destinations = [L.marker([36.1215, -115.1739]), L.marker([39.7392, -104.9847]), L.marker([41.8819, 87.6278]), L.marker([40.2697, 76.8756])]
-  var path = L.polyline(destinations, {color:'red'});
+
+
+
+
+  destinations = [L.marker([37.7833, -122.4167]), L.marker([36.1215, -115.1739]), L.marker([39.7392, -104.9847]), L.marker([41.8819, -87.6278]), L.marker([40.2697, -76.8756])]
+  var destination_coords = [];
+  $.each(destinations, function(index, destination)
+  {
+  	destination_coords.push([destination.getLatLng().lat, destination.getLatLng().lng]);
+  });
+  var path = L.polyline(destination_coords, {color:'#661111', opacity:'.8'});
+  path.addTo(map);
 </script>
