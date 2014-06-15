@@ -2,25 +2,17 @@ class ChoicesController < ApplicationController
   def new
     @player = current_player
     @choice = @player[:pending_choices].first
-
-    @environment = OpenStruct.new sea_level: 2,
-      temp: 80,
-      precip: 5
-
-    @resources = OpenStruct.new money: 200,
-      food: 3,
-      gas: 8
   end
 
   def create
     @player = current_player
     choice = @player[:pending_choices].shift
     selected_option =
-      choice[:options].select{|o| o[:id] == params[:option_id]}.first
+      choice[:options].select{|o| o[:id] == params[:option_id].to_i}.first
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
-    @player[:money] += selected_option[:outcome][:resource]
-    @player[:car] = selected_option[:outcome][:car]
+    @player[:money] += selected_option[:outcome][:resource] if selected_option[:outcome][:resource]
+    @player[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]
     choice[:selected_option] = selected_option
     @player[:completed_choices].push choice
 
