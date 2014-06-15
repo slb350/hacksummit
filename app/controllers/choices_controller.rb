@@ -11,6 +11,9 @@ class ChoicesController < ApplicationController
     if costs.count > 0 and @player[:money] <= costs.min
       @out_of_money = true
     end
+    if rand < 0.2
+      @event = true
+    end
   end
 
   def create

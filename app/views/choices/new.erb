@@ -6,7 +6,17 @@
   <%= javascript_tag do %>
     $(function() {
       $("#out-of-money").foundation("reveal", "open");
-      console.log("bla");
+    });
+  <% end %>
+<% end %>
+<% if @event %>
+  <div id="event" class="reveal-modal" data-reveal>
+    <h2 style="color: #000;">Some shit went down. And it cost ya.</h2>
+    <a class="close-modal" onclick="$('#event').foundation('reveal', 'close')">Continue</a>
+  </div>
+  <%= javascript_tag do %>
+    $(function() {
+      $("#event").foundation("reveal", "open", {dismiss_modal_class: "close-reveal-modal"});
     });
   <% end %>
 <% end %>
