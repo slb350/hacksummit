@@ -5,10 +5,5 @@
   <%= label_tag(:player_color, "Color") %>
   <%= text_field_tag(:player_color) %>
   <br/>
-  <% @cars.each do |car| %>
-    <%= radio_button_tag(:player_car, car.name.downcase) %>
-    <%= label_tag("player_car_#{car.name.downcase}", car.name) %>
-    <br/>
-  <% end %>
   <%= submit_tag("Hit the Road!") %>
 <% end %>

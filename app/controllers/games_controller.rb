@@ -2,6 +2,9 @@ class GamesController < ApplicationController
   def welcome
   end
 
+  def finished
+  end
+
   def new
     @cars = [
       OpenStruct.new(name: "Prius"),
@@ -24,7 +27,7 @@ class GamesController < ApplicationController
 
     # now persist player
     store_player(player)
-    redirect_to maps_path(player_id: player[:id])
+    redirect_to new_choice_path(player_id: player[:id])
   end
 
   protected
@@ -38,13 +41,24 @@ class GamesController < ApplicationController
           long: "122.4",
           mileage: 0
         },
-        description: "Your car is broken down WHAT DO YOU DO",
+        description: "Choose your car",
         options: [
           {
-            description: "Wait for help",
-            impact: {
-              resource: -2,
-              environment: 3
+            description: "Prius",
+            outcome: {
+              car: "prius"
+            }
+          },
+          {
+            description: "Camry",
+            outcome: {
+              car: "camry"
+            }
+          },
+          {
+            description: "Volt",
+            outcome: {
+              car: "volt"
             }
           }
         ]
@@ -60,7 +74,7 @@ class GamesController < ApplicationController
         options: [
           {
             description: "Wait for help",
-            impact: {
+            outcome: {
               resource: -2,
               environment: 3
             }
@@ -78,7 +92,7 @@ class GamesController < ApplicationController
         options: [
           {
             description: "Wait for help",
-            impact: {
+            outcome: {
               resource: -2,
               environment: 3
             }
@@ -96,7 +110,7 @@ class GamesController < ApplicationController
         options: [
           {
             description: "Wait for help",
-            impact: {
+            outcome: {
               resource: -2,
               environment: 3
             }

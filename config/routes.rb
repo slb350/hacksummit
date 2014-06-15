@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :games
   get 'welcome' => 'games#welcome'
-  resources :maps
+  get 'finished' => 'games#finished'
   resources :choices
 
   # Example of regular route:

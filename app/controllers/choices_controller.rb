@@ -19,16 +19,16 @@ class ChoicesController < ApplicationController
       choice[:options].select{|o| o[:id] == params[:choice_option]}.first
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
-    @player[:money] += selected_option[:impact][:resource]
+    @player[:money] += selected_option[:outcome][:resource]
+    @player[:car] = selected_option[:outcome][:car]
     choice[:selected_option] = selected_option
     @player[:completed_choices].push choice
 
     store_player(@player)
-    if @player[:money] <= 0
-      # Lose game if player money is less than 0?
-      puts "game over dude"
+    if @player[:money] <= 0 || @player[:pending_choices].count == 0
+      redirect_to("/finished", player_id: @player[:id])
     else
-      redirect_to(map_show_path(:@player[:id]))
+      redirect_to(new_choice_path(@player[:id]))
     end
   end
 end
