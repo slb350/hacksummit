@@ -64,12 +64,8 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 	border-radius: 6px;
 	background-color:#332222;
 }
-.player-icon:after
+.player-icon
 {
-	content:'Josh';
-	position: relative;
-	bottom: -10px;
-	left:-10px;
 	font-size: 1.25em;
 	color:#332222;
 }
