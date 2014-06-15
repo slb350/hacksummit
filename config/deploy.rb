@@ -17,7 +17,7 @@ desc 'Restart Rails Services'
   task :rails_restart do
     on roles(:all), in: :sequence, wait: 5 do
      execute "ps -ef | grep rails | grep -v grep | awk '{print $2}' | xargs kill -9"
-     execute "cd /home/#{fetch(:user)}/apps/#{fetch(:application)}/current/; rails server -d"
+     execute "cd /home/#{fetch(:user)}/apps/#{fetch(:application)}/current/ && sudo rails server -d --port=80"
     end
   end
 
