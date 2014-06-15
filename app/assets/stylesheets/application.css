@@ -110,6 +110,10 @@ i.fa-facebook-square, i.fa-twitter-square
 {
 	cursor:	default;
 }
+.progress
+{
+	background-color: #FFFFFF;
+}
 .footer
 {
 	background-color: #475291;
