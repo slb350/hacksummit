@@ -13,6 +13,13 @@ class ChoicesController < ApplicationController
       o[:outcome][:cost] = (o[:outcome][:cost] * cost_multi.to_f).to_i if cost_multi > 0
     end
 
+    if @session[:parent_session_id]
+      parent_session = get_session(@session[:parent_session_id])
+      previous_choice = parent_session[:completed_choices]
+        .select{|c| c[:id] == @choice[:id]}.first
+      @previous_option_id = previous_choice[:selected_option][:id]
+    end
+
     costs = @choice[:options].map{|o| o[:outcome][:cost]}.reject{|c| !c}
     event_prob = 0.1
     event_prob = (@session[:initial_environment].to_f / 100) * 2

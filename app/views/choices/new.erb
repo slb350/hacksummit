@@ -84,12 +84,17 @@
           <% description += " (you don't have enough money!)" if disabled  %>
           <%= label_tag "option_#{option[:id]}", {for: 'option_id_' + option[:id].to_s} do %>
               <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
-              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
-                <span data-tooltip class="has-tip" title="<%= option[:environmental_impact_description]  %>">
+              <% if @session[:iteration] > 1 %>
+                  <span class="<%= 'previous-selection' if option[:id] == @previous_option_id  %>" style="<%= 'text-decoration: underline;' if option[:id] == @previous_option_id  %>">
               <% end %>
               <%= description %>
-              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
+              <% if @session[:iteration] > 1 %>
                 </span>
+              <% end %>
+              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
+                <a class="has-tip" data-tooltip title="<%= option[:environmental_impact_description] %>">
+                  <i class="popover"></i>
+                </a>
               <% end %>
           <% end %>
 	    <br/>
