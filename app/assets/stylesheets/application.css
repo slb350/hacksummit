@@ -129,3 +129,7 @@ i.fa-facebook-square, i.fa-twitter-square
 	color:#fbfbfb;
 	text-decoration: underline;
 }
+.alert-box.warning h1, .alert-box.warning h2, .alert-box.warning h3, .alert-box.warning h4, .alert-box.warning h5, .alert-box.warning h6
+{
+	color:white;
+}
