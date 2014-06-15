@@ -84,3 +84,7 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 {
 	background-color:#1A2B2B;
 }
+.leaflet-clickable, .leaflet-container
+{
+	cursor:	default;
+}
