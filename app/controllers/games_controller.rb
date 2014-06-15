@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     player[:id] = SecureRandom.uuid
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
-    player[:starting_money] = 600
+    player[:starting_money] = 500
     player[:money] = player[:starting_money]
     player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
