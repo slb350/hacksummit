@@ -12,8 +12,8 @@ class GamesController < ApplicationController
 
   def create
     player = {}.tap do |p|
-      p[:name] = params[:player_name]
-      p[:color] = params[:player_color]
+      p[:name] = params[:player_name] || "Player 1"
+      p[:color] = params[:player_color] || "#6E913F"
       p[:pending_choices] = standard_choices
       p[:completed_choices] = []
     end
