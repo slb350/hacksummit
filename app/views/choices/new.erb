@@ -47,7 +47,7 @@
 	  <%= hidden_field_tag :player_id, @player[:id]%>
 	  <% @choice[:options].each do |option| %>
 	    <%= radio_button_tag(:option_id, option[:id]) %>
-	    <%= label_tag("option_#{option[:id]}", option[:description]) %>
+	    <%= label_tag("option_#{option[:id]}", option[:description], {for: 'option_id_' + option[:id].to_s}) %>
 	    <br/>
 	  <% end %>
 	  <%= submit_tag("Submit") %>
@@ -74,7 +74,8 @@
 	var playerMarker = L.marker([37.7833, -122.4167], {icon:playerIcon}).addTo(map);
 	//Change the player icon color and add the player's name to it.
 	$('.player-icon').append('<span style="position:relative;bottom:-10px;left:-10px;">'+window.player.name+'</span>');
-
+	$('.player-icon').css('color', window.player.color)
+	$('.player-icon').css('background-color', window.player.color)
 	//empty array to push bootstrapped rails data into
 	var destination_coords = [];
 	//pass those in, as LatFuckingLngs no less.

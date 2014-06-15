@@ -19,10 +19,15 @@ body
 {
 	background-color: #661111;
 	color:#FFF;
+	font-family: 'Nobile'
 }
 h1, h2, h3, h4, h5, h6, .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, label
 {
 	color:#FFF;
+}
+h1,h2,h3, h4, h5
+{
+	font-family: 'Lemon'
 }
 nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 {
@@ -57,6 +62,12 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 {
 	padding:0 25px;
 }
+#questions
+{
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top: none;
+}
 .player-icon
 {
 	width:8px;
@@ -68,4 +79,8 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 {
 	font-size: 1.25em;
 	color:#332222;
+}
+.button.red
+{
+	background-color:#1A2B2B;
 }
