@@ -30,26 +30,44 @@
 <div class="row" data-equalizer>
 	<div class="small-12 medium-4 columns" data-equalizer-watch>
 		<div class="app-icon">
-			<a href="#"><i class="fa fa-database"></i></a>
+			<a href="#" data-reveal-id="dataModal"><i class="fa fa-database"></i></a>
 		</div>
 		<h3 class="text-center">
-			<a href="#">Data</a>
+			<a href="#" data-reveal-id="dataModal">Data</a>
 		</h3>
 	</div>
 	<div class="small-12 medium-4 columns" data-equalizer-watch>
 		<div class="app-icon">
-			<a href="#"><i class="fa fa-bullhorn"></i></a>
+			<a href="#" data-reveal-id="storyModal"><i class="fa fa-bullhorn"></i></a>
 		</div>
 		<h3 class="text-center">
-			<a href="#">Story</a>
+			<a href="#" data-reveal-id="storyModal">Story</a>
 		</h3>
 	</div>
 	<div class="small-12 medium-4 columns" data-equalizer-watch>
 		<div class="app-icon">
-			<a href="#"><i class="fa fa-globe"></i></a>
+			<a href="#" data-reveal-id="changeModal"><i class="fa fa-globe"></i></a>
 		</div>
 		<h3 class="text-center">
-			<a href="#">Change</a>
+			<a href="#" data-reveal-id="changeModal">Change</a>
 		</h3>
 	</div>
+</div>
+<div id="dataModal" class="reveal-modal" data-reveal>
+  <h2>Data? What Data?</h2>
+  <p class="lead">Data helps us tell effective stories...</p>
+  <p>Although we haven't had to hook up robust API's to this app in its current iteration, don't think we're just making up facts. Hours of this hackathon have gone into researching the impacts of the choices we present in the game. Plus, we've designed the mechanics so that more specific climate models can easily be inserted to give the game a different set of feedback loops, and thus very different priorities.</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="storyModal" class="reveal-modal" data-reveal>
+  <h2>Data Alone is not Enough</h2>
+  <p class="lead">You have to tell a great story...</p>
+  <p>Stories lend a set of human values and contexts for decision simulators. They give decisions emotional resonance, and they allow the audience to reveal their viewpoint of the world without feeling defensive. For this hackathon, we chose to tell one story: the story of a roadtrip. But there are plenty of other great stories out there that come with their own set of decisions and lessons to be learned. There's a lot of room for a set of apps like this to grow.</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="changeModal" class="reveal-modal" data-reveal>
+  <h2>Everyone Talks it, Very Few Walk it</h2>
+  <p class="lead">Change comes from people...</p>
+  <p>And people make change using their inner narratives. Everyone knows heros can make a difference. The challenge is not to give people super powers, but to give them a personal narrative that empowers them to use the powers they already have.</p>
+  <a class="close-reveal-modal">&#215;</a>
 </div>
