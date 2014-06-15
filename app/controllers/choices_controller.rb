@@ -15,6 +15,7 @@ class ChoicesController < ApplicationController
     if costs.count > 0 and @player[:money] <= costs.min
       @out_of_money = true
     end
+    store_player(@player)
   end
 
   def create
@@ -46,19 +47,19 @@ class ChoicesController < ApplicationController
     [
       {
         description: "You got a flat tire!",
-        cost: 75
+        cost: 125
       },
       {
         description: "Storms slow you down!",
-        cost: 75
+        cost: 125
       },
       {
         description: "Accident slows you down!",
-        cost: 75
+        cost: 125
       },
       {
         description: "Gas prices spike!",
-        cost: 75
+        cost: 125
       }
     ].sample
   end
