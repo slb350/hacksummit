@@ -177,6 +177,20 @@ class GamesController < ApplicationController
           {
             id: 3,
             description: "There's a great farm-to-table restaurant at the next exit!",
+            resource_impact_description: <<-DESC ,
+            DESC
+            environmental_impact_description: <<-DESC ,
+              Local food is not only healthier and tastier, it is also better for the
+              environment because fewer transport miles equal fewer transmissions. According
+              to a study conducted by the Leopold Center for Sustainable Agriculture at Iowa State University,
+              food travels 1,500 miles on average from farm to customer while locally sourced food travels an average
+              of 44.6 miles. The same study found that the conventional food distribution system uses 4 to 17 times more
+              fuel and emits 5 to 17 times more CO2 than local and regional systems.
+              However, the environmental impact of food depends not only on how long it travels, but also on how it is
+              transported. Ton for ton, trains are far more efficient at moving freight than trucks are. This means that
+              the greenhouse gases associated with transporting potatoes trucked in from 100 miles away is the same as those
+              associated with potatoes shipped in by rail from 1,000 miles away.
+            DESC
             outcome: {
               cost: 125,
               cost_impact: 2,
@@ -197,6 +211,18 @@ class GamesController < ApplicationController
           {
             id: 1,
             description: "Buy 2 whole cases of bottled water at Costco",
+            resource_impact_description: <<-DESC ,
+              2- 24 packs of bottled water cost $12. It will last you 8 days,
+              but the weight that the cases of water adds to your car will affect your fuel economy.
+            DESC
+            environmental_impact_description: <<-DESC ,
+              The weight that the case of water adds to your car will affect your fuel economy which
+              affects the amount of gas you are using. Every time you buy a plastic drinking bottle,
+              you are also using some of the world's limited supply of oil--manufacturers use petroleum
+              to make and transport plastic products. Plastic bottle production in the U.S. requires millions
+              of barrels of crude oil annually. Beverage companies then use fuel to transport the bottles all
+              over the world, polluting the atmosphere in the process.
+            DESC
             outcome: {
               cost: 40,
               cost_impact: 4,
@@ -206,6 +232,13 @@ class GamesController < ApplicationController
           {
             id: 2,
             description: "Buy a stainless steel water bottle and fill it at the tap",
+            resource_impact_description: <<-DESC ,
+              The stainless steel bottle costs $12.99. Can refill water for free.
+            DESC
+            environmental_impact_description: <<-DESC ,
+              You save the fuel it costs to create water bottles and recycle them and
+              the extra gas it takes to carry cases of water in your car.
+            DESC
             outcome: {
               cost: 80,
               cost_impact: 2,
@@ -215,6 +248,20 @@ class GamesController < ApplicationController
           {
             id: 3,
             description: "Buy some 2 liters of soda instead",
+            resource_impact_description: <<-DESC ,
+              A 24 pack of bottled water costs $5.99. It will last you 4 days,
+              but the weight that the cases of water adds to your car will affect your fuel economy
+            DESC
+            environmental_impact_description: <<-DESC ,
+              Although you are using less water bottles than if you had bought 2 cases, the amount
+              of fuel that it takes the companies that produce them to transport the products still
+              takes the same amount of gas. The weight that the case of water adds to your car will
+              affect your fuel economy which affects the amount of gas you are using. Every time you
+              buy a plastic drinking bottle, you are also using some of the world's limited supply of
+              oil manufacturers use petroleum to make and transport plastic products. Plastic bottle
+              production in the U.S. requires millions of barrels of crude oil annually. Beverage
+              companies then use fuel to transport the bottles all over the world, polluting the atmosphere in the process.
+            DESC
             outcome: {
               cost: 60,
               cost_impact: 2.5,
