@@ -67,7 +67,7 @@ class GamesController < ApplicationController
             description: "Volt",
             outcome: {
               car: "volt",
-              cost: 4000
+              cost: 4990
             }
           }
         ]
