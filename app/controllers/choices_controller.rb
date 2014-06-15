@@ -6,8 +6,8 @@ class ChoicesController < ApplicationController
       (1 - (@player[:miles_remaining].to_f / @player[:total_miles])).round(2)*100
     @money_percent = (@player[:money].to_f / 500).round(2)*100
 
-    costs = @choice.options.map{|o| o[:outcome][:money]}
-    if @player[:money] <= costs.min
+    costs = @choice[:options].map{|o| o[:outcome][:cost]}.reject{|c| !c}
+    if costs.count > 0 and @player[:money] <= costs.min
       @out_of_money = true
     end
   end
