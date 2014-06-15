@@ -22,7 +22,6 @@ group :development, :test do
   gem 'rspec-rails', "~> 2.14"
   gem 'guard'
   gem 'guard-livereload'
-  gem 'pry-debugger'
 end
 
 gem "compass", "~> 0.12.6"
