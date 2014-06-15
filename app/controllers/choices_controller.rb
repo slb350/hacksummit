@@ -59,6 +59,6 @@ class ChoicesController < ApplicationController
         description: "Gas prices spike!",
         cost: 100
       }
-    ]
+    ].sample
   end
 end
