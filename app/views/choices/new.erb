@@ -11,7 +11,7 @@
 <% end %>
 <% if @event %>
   <div id="event" class="reveal-modal" data-reveal>
-    <h2 style="color: #000;">Some shit went down. And it cost ya.</h2>
+      <h2 style="color: #000;"><%= @event[:description] %></h2>
     <a class="close-modal" onclick="$('#event').foundation('reveal', 'close')">Continue</a>
   </div>
   <%= javascript_tag do %>
