@@ -13,20 +13,15 @@ set :linked_dirs, %w[tmp/cache]
 
 namespace :deploy do
 
-desc 'Kill Rails Services'
-  task :rails_kill do
-    on roles(:all), in: :sequence, wait: 5 do
-      execute "cd /home/#{fetch(:user)/stoprails.sh"
-    end
-  end
-
 desc 'Restart Rails Services'
   task :rails_restart do
     on roles(:all), in: :sequence, wait: 5 do
+      execute "cd /home/#{fetch(:user)/stoprails.sh}"
       execute "cd /home/#{fetch(:user)/rails.sh"
     end
   end
 
-  after :finishing, 'deploy:rails_kill', 'rails_restart'
+
+  after :finishing, 'rails_restart'
 
 end
