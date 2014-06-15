@@ -31,6 +31,7 @@ gem "jbuilder", "~> 1.5"
 gem "lograge"
 gem 'mongoid', '4.0.0.rc1', github: 'mongoid/mongoid'
 gem "pg", "~> 0.17"
+gem 'redis-store'
 gem "sidekiq", "~> 3.0"
 gem "sinatra", "~> 1.4"
 gem "twitter-bootstrap-rails"

@@ -308,6 +308,7 @@ DEPENDENCIES
   pry-byebug (~> 1.2)
   rails (~> 4.1)
   redis-rails
+  redis-store
   rspec-rails (~> 2.14)
   sidekiq (~> 3.0)
   simplecov
