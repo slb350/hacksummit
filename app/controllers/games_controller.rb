@@ -44,18 +44,21 @@ class GamesController < ApplicationController
         description: "Choose your car",
         options: [
           {
+            id: 1,
             description: "Prius",
             outcome: {
               car: "prius"
             }
           },
           {
+            id: 2,
             description: "Camry",
             outcome: {
               car: "camry"
             }
           },
           {
+            id: 3,
             description: "Volt",
             outcome: {
               car: "volt"
@@ -73,6 +76,7 @@ class GamesController < ApplicationController
         description: "Your car is broken down WHAT DO YOU DO",
         options: [
           {
+            id: 1,
             description: "Wait for help",
             outcome: {
               resource: -2,
@@ -91,6 +95,7 @@ class GamesController < ApplicationController
         description: "Your car is broken down WHAT DO YOU DO",
         options: [
           {
+            id: 1,
             description: "Wait for help",
             outcome: {
               resource: -2,
@@ -109,6 +114,7 @@ class GamesController < ApplicationController
         description: "Your car is broken down WHAT DO YOU DO",
         options: [
           {
+            id: 1,
             description: "Wait for help",
             outcome: {
               resource: -2,

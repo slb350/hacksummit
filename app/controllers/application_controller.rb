@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_player(player_id)
-    JSON.parse $redis.get(player_id)
+    JSON.parse $redis.get(player_id), symbolize_names: true
   end
 end

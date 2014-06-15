@@ -14,9 +14,9 @@ class ChoicesController < ApplicationController
 
   def create
     @player = current_player
-    choice = @player[:pending_choices].unshift
+    choice = @player[:pending_choices].shift
     selected_option =
-      choice[:options].select{|o| o[:id] == params[:choice_option]}.first
+      choice[:options].select{|o| o[:id] == params[:option_id]}.first
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
     @player[:money] += selected_option[:outcome][:resource]
@@ -28,7 +28,7 @@ class ChoicesController < ApplicationController
     if @player[:money] <= 0 || @player[:pending_choices].count == 0
       redirect_to("/finished", player_id: @player[:id])
     else
-      redirect_to(new_choice_path(@player[:id]))
+      redirect_to(new_choice_path(player_id: @player[:id]))
     end
   end
 end
