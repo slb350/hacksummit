@@ -1,0 +1,37 @@
+{
+  "name": "hacksummit",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.2.16",
+    "json3": "~3.2.4",
+    "jquery": "1.11.0",
+    "bootstrap-sass": "~2.3.1",
+    "es5-shim": "~2.0.8",
+    "angular-resource": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "angular-cookies": "~1.2.16",
+    "angular-sanitize": "~1.2.16",
+    "jquery-file-upload": "~9.5.7",
+    "angular-google-chart": "~0.0.2",
+    "angular-ui": "0.4.0",
+    "angular-bootstrap": "0.10.0",
+    "angular-ui-ace": "~0.1.0",
+    "blueimp-load-image": "~1.11.0",
+    "sass-bootstrap": "~3.0.2",
+    "zeroclipboard": "~1.2.3",
+    "font-awesome": "4.0.3",
+    "pusher": "~2.1.5",
+    "angular-bootstrap-colorpicker": "~3.0.4",
+    "angular-ui-slider": "~0.0.1",
+    "angular-ui-select2": "~0.0.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.16",
+    "angular-scenario": "~1.2.16",
+    "jasmine-jquery": "~1.7.0"
+  },
+  "resolutions": {
+    "angular": "~1.2.x",
+    "jquery": "~1.11.x"
+  }
+}
