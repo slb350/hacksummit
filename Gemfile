@@ -42,3 +42,4 @@ gem "yaml_db", "~> 0.2", {:github=>"jetthoughts/yaml_db", :ref=>"fb4b6bd7e12de3c
 gem 'redis-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'foundation-rails'

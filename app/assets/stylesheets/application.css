@@ -11,5 +11,64 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require foundation
  *= require_self
  */
+
+body
+{
+	background-color: #661111;
+	color:#FFF;
+}
+h1, h2, h3, h4, h5, h6, .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6
+{
+	color:#FFF;
+}
+nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
+{
+	background-color: #332222;
+}
+.top-bar-section li:not(.has-form) a:not(.button):hover
+{
+	background-color: #4D1A1A;
+}
+#content
+{
+	margin-top:20px;
+}
+.panel
+{
+	background-color: #4D1A1A;
+}
+#map
+{
+	height:400px;
+}
+#status>.panel
+{
+	height:300px;
+	margin: 0;
+}
+#status>.panel>.meter-container>.progress, #status>.panel .meter-container
+{
+	height: 80%;
+}
+.meter-container
+{
+	padding:0 25px;
+}
+.player-icon
+{
+	width:8px;
+	height:8px;
+	border-radius: 6px;
+	background-color:#332222;
+}
+.player-icon:after
+{
+	content:'Josh';
+	position: relative;
+	bottom: -10px;
+	left:-10px;
+	font-size: 1.25em;
+}
