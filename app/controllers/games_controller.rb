@@ -109,7 +109,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "I'll just find a hotel.",
             outcome: {
-              cost: 150,
+              cost: 125,
               cost_impact: 2,
               environment: 4
             }
@@ -119,7 +119,7 @@ class GamesController < ApplicationController
             description: "Air B'n'B has yet to let me down!",
             outcome: {
               cost: 75,
-              cost_impact: 1,
+              cost_impact: 1.5,
               environment: 1
             }
           },
@@ -128,15 +128,15 @@ class GamesController < ApplicationController
             description: "I'll see if there's a local hostel at the next city.",
             outcome: {
               cost: 100,
-              cost_impact: 1.2,
+              cost_impact: 1.5,
               environment: 2
             }
           },
           {
             id: 4,
-            description: "Let's go camping!",
+            description: "Let's buy gear go camping!",
             outcome: {
-              cost: 50,
+              cost: 50-0,
               cost_impact: 1,
               environment: 3
             }
