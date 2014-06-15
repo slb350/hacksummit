@@ -8,7 +8,7 @@ class ChoicesController < ApplicationController
       (@player[:money].to_f / @player[:starting_money]).round(2)*100
 
     costs = @choice[:options].map{|o| o[:outcome][:cost]}.reject{|c| !c}
-    if rand < 0.25
+    if rand < 0.25 and @choice[:location][:type] != "start"
       @event = random_event
       @player[:money] -= @event[:cost]
     end
