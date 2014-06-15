@@ -26,14 +26,14 @@
 			<p>To give you the chance to see what those effects might be, try playing as the next generation!</p>
 			<%= link_to "Proceed to the next generation", welcome_path(parent_session_id: @session[:id]), {class: "button red radius"}  %>
 			<div class="right">
-				<a target="_blank" href="https://twitter.com/share?text=I made it to New York with <%= @session[:money] %> left! How far can you make it?"><i class="fa fa-twitter-square"></i></a>
-				<a onclick="FB.ui({method: 'feed', link: 'http://www.aninconvenientapp.com/', caption: 'I made it to New York with <%= @session[:money] %> left! How far can you make it?'}, function(response){});"><i class="fa fa-facebook-square"></i></a>
+				<a target="_blank" href="https://twitter.com/share?text=I made it to New York with $<%= @session[:money] %> left! How far can you make it?"><i class="fa fa-twitter-square"></i></a>
+				<a onclick="FB.ui({method: 'feed', link: 'http://www.aninconvenientapp.com/', caption: 'I made it to New York with $<%= @session[:money] %> left! How far can you make it?'}, function(response){});"><i class="fa fa-facebook-square"></i></a>
 			</div>
 		</div>
 	</div>
 	<div class="small-12 medium-4 columns">
 		<div class="small-12 panel radius">
-			<h6>Money: <%= @session[:money] %></h6>
+			<h6>Money: $<%= @session[:money] %></h6>
 		</div>
 	</div>
 <% end %>
