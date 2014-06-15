@@ -41,6 +41,7 @@
             <span class="meter" style="width:<%= @progress_percent %>%;"></span>
         </div>
         <h6><%= @player[:total_miles] - @player[:miles_remaining] %> / <%= @player[:total_miles]  %> mi.</h6>
+        <h6>Environmental Impact: <%= @player[:environment] %></h6>
       </div>
   </div>
   <div class="small-12 columns panel radius" id="planet-status" style="display:none;">
