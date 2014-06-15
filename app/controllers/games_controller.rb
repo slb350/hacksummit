@@ -22,15 +22,15 @@ class GamesController < ApplicationController
   def create
     choices = choice_template
 
-    parent_session = $redis.get(params[:parent_session_id]) if params[:parent_session_id]
+    @parent_session = $redis.get(params[:parent_session_id]) if params[:parent_session_id]
 
     session = {}
     session[:id] = SecureRandom.uuid
-    session[:name] = params[:session_name] || "session 1"
+    session[:name] = params[:session_name] || "Player 1"
     session[:color] = params[:session_color] || "#6E913F"
     session[:starting_money] = 1000
     session[:money] = session[:starting_money]
-    session[:environment] = parent_session[:environment] || 0
+    session[:environment] = @parent_session.try(:environment) || 0
     session[:total_miles] = choices.sum{|c| c[:location][:mileage] }
     session[:miles_remaining] = session[:total_miles]
     session[:pending_choices] = choices
