@@ -31,7 +31,8 @@ class GamesController < ApplicationController
       session[:color] = @parent_session[:color]
       session[:parent_session_id] = @parent_session[:id]
       session[:iteration] = @parent_session[:iteration] + 1
-      session[:initial_environment] = @parent_session[:environment]
+      # FOR DEMO - crank up environmental issues on second gen
+      session[:initial_environment] = @parent_session[:environment] * 2.5
     else
       session[:name] = params[:session_name]
       session[:color] = params[:session_color]

@@ -28,6 +28,7 @@ class ChoicesController < ApplicationController
       @event = random_event
       @event[:cost] = (@event[:cost] * (1 + (@session[:initial_environment].to_f / 100))).to_i
       @session[:money] -= @event[:cost]
+      @session[:money] = @session[:money].to_i
     end
     if costs.count > 0 and @session[:money] <= costs.min
       @out_of_money = true
@@ -44,6 +45,7 @@ class ChoicesController < ApplicationController
 
     @session[:money] -= selected_option[:outcome][:cost] if selected_option[:outcome][:cost]
     @session[:money] -= @session[:car][:gas_cost] * @session[:initial_environment].to_f / 100 * 2 if @session[:car]
+    @session[:money] = @session[:money].to_i
     @session[:miles_remaining] -= choice[:location][:mileage]
     @session[:environment] += selected_option[:outcome][:environment] if selected_option[:outcome][:environment]
     @session[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]
