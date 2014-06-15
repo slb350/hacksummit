@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   end
 
   def finished
+    @player = current_player
   end
 
   def new

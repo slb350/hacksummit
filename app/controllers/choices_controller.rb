@@ -33,9 +33,9 @@ class ChoicesController < ApplicationController
 
     store_player(@player)
     if @player[:pending_choices].count == 0
-      redirect_to("/finished", player_id: @player[:id])
+      redirect_to(finished_path player_id: @player[:id])
     else
-      redirect_to(new_choice_path(player_id: @player[:id]))
+      redirect_to(new_choice_path player_id: @player[:id])
     end
   end
 

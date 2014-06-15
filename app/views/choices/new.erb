@@ -70,11 +70,13 @@
 	  <%= hidden_field_tag :player_id, @player[:id]%>
 	  <% @choice[:options].each do |option| %>
           <% disabled = true if option[:outcome][:cost] and @player[:money] < option[:outcome][:cost] %>
-          <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
           <% description = option[:description]  %>
           <% description += " ($#{option[:outcome][:cost]})" if option[:outcome][:cost]%>
           <% description += " (you don't have enough money!)" if disabled  %>
-          <%= label_tag "option_#{option[:id]}", description, {for: 'option_id_' + option[:id].to_s}%>
+          <%= label_tag "option_#{option[:id]}", {for: 'option_id_' + option[:id].to_s} do %>
+              <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
+              <%= description %>
+          <% end %>
 	    <br/>
 	  <% end %>
 	  <%= submit_tag("Submit") %>
