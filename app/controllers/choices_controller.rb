@@ -9,7 +9,7 @@ class ChoicesController < ApplicationController
 
     @choice[:options].each do |o|
       cost_multi = 1 + (@session[:initial_environment].to_f / 100)
-      cost_multi *= o[:outcome][:cost_impact].to_f if o[:outcome][:cost_impact]
+      cost_multi *= 1 + (o[:outcome][:cost_impact].to_f / 10) if o[:outcome][:cost_impact]
       o[:outcome][:cost] = (o[:outcome][:cost] * cost_multi.to_f).to_i if cost_multi > 0
     end
 

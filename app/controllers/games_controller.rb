@@ -29,7 +29,11 @@ class GamesController < ApplicationController
 
     session = {}
     session[:id] = SecureRandom.uuid
-    session[:parent_session_id] = @parent_session.try(:[], :id)
+    if @parent_session
+      session[:parent_session_id] = @parent_session[:id]
+      session[:iteration] = @parent_session[:iteration] + 1
+    end
+    session[:iteration] ||= 1
     session[:name] = params[:session_name] || "Player 1"
     session[:color] = params[:session_color] || "#6E913F"
     session[:starting_money] = 1000
@@ -136,8 +140,8 @@ class GamesController < ApplicationController
             id: 4,
             description: "Let's buy gear go camping!",
             outcome: {
-              cost: 50-0,
-              cost_impact: 1,
+              cost: 500,
+              cost_impact: 0,
               environment: 3
             }
           }
