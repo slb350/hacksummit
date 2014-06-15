@@ -79,7 +79,7 @@
           <% end %>
 	    <br/>
 	  <% end %>
-	  <%= submit_tag("Submit") %>
+	  <%= submit_tag("Submit", {class: "button red radius right"}) %>
 	<% end %>
 </div>
 <script>
@@ -92,15 +92,15 @@
 	setTimeout(function(){var foldedMap = new OriDomi(document.getElementById('map'));}, 2000);
 	//foldedMap.foldUp();
 
-
+	var currentPosition = [window.player.pending_choices[0].location.lat, window.player.pending_choices[0].location.long];
 	//initialize the map in the #map div
 	var map = L.map('map', {scrollWheelZoom:false, doubleClickZoom:false, boxZoom:false, touchZoom:false, keyboard:false, dragging:false})
 	  .addLayer(mapboxTiles)
-	  .setView([37.7833, -122.4167], 8);
+	  .setView(currentPosition, 8);
 	//new leaflet icon
 	var playerIcon = L.divIcon({className:'player-icon'});
 	//make new instance of that icon and add it to the map
-	var playerMarker = L.marker([37.7833, -122.4167], {icon:playerIcon}).addTo(map);
+	var playerMarker = L.marker(currentPosition, {icon:playerIcon}).addTo(map);
 	//Change the player icon color and add the player's name to it.
 	$('.player-icon').append('<span style="position:relative;bottom:-10px;left:-10px;">'+window.player.name+'</span>');
 	$('.player-icon').css('color', window.player.color)

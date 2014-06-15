@@ -1,25 +1,29 @@
-<div class="small-12 medium-8 panel radius">
-<h1 class="text-center">Create Your Player!</h1>
-<%= form_tag("/games", method: "post") do %>
-  <div class="small-10 columns">
-  	<%= label_tag(:player_name, "Player Name") %>
-  	<%= text_field_tag(:player_name) %>
-  </div>
-  <div class="small-2 columns">
-	  <%= label_tag(:player_color, "Car Color") %>
-	  <%= text_field_tag(:player_color) %>
-  </div>
-  <div class="text-center"><%= submit_tag("Hit the Road!", {class: "button red radius"}) %></div>
-<% end %>
+<div class="small-12 medium-7 columns">
+	<div class="small-12 panel radius">
+		<h1 class="text-center">Create Your Player!</h1>
+		<%= form_tag("/games", method: "post") do %>
+		  <div class="small-9 columns">
+		  	<%= label_tag(:player_name, "Player Name") %>
+		  	<%= text_field_tag(:player_name) %>
+		  </div>
+		  <div class="small-3 columns">
+			  <%= label_tag(:player_color, "Car Color") %>
+			  <%= text_field_tag(:player_color) %>
+		  </div>
+		  <div class="text-center"><%= submit_tag("Hit the Road!", {class: "button red radius"}) %></div>
+		<% end %>
+	</div>
 </div>
-<div class="small-4 columns panel radius">
-	<ul>
-		<li>Starting Location:San Francisco, CA</li>
-		<li>Ending Location: New York, NY</li>
-	</ul>
+<div class="small-12 medium-5 columns">
+	<div class="small-12 panel radius">
+		<ul>
+			<li>Starting Location: San Francisco, CA</li>
+			<li>Ending Location: New York, NY</li>
+		</ul>
+	</div>
 </div>
 <script>
 	$("#player_color").spectrum({
-	    color: "#f00"
+	    color: "#fff"
 	});
 </script>
