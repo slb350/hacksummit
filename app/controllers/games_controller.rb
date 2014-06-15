@@ -81,7 +81,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              money: -20,
+              money: 20,
               environment: 3
             }
           }
@@ -100,7 +100,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              money: -2,
+              money: 2,
               environment: 3
             }
           }
@@ -119,7 +119,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              money: -2,
+              money: 2,
               environment: 3
             }
           }
@@ -138,7 +138,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              money: -2,
+              money: 2,
               environment: 3
             }
           }
@@ -157,7 +157,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              money: -2,
+              money: 2,
               environment: 3
             }
           }
