@@ -19,6 +19,7 @@ class GamesController < ApplicationController
     ]
 
     @parent_session_id = params[:parent_session_id]
+    @parent_session = get_session(params[:parent_session_id]) unless params[:parent_session_id].to_s == ""
   end
 
   def create
