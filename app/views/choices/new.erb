@@ -46,7 +46,8 @@
 	<%= form_tag("/choices", method: "post") do %>
 	  <%= hidden_field_tag :player_id, @player[:id]%>
 	  <% @choice[:options].each do |option| %>
-	    <%= radio_button_tag(:option_id, option[:id]) %>
+          <% disabled = true if option[:outcome][:cost] and @player[:money] < option[:outcome][:cost] %>
+          <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
 	    <%= label_tag("option_#{option[:id]}", option[:description]) %>
 	    <br/>
 	  <% end %>

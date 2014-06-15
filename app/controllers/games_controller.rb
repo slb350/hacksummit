@@ -20,7 +20,8 @@ class GamesController < ApplicationController
     player[:id] = SecureRandom.uuid
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
-    player[:money] = 100
+    player[:starting_money] = 5000
+    player[:money] = player[:starting_money]
     player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
     player[:miles_remaining] = player[:total_miles]
@@ -49,21 +50,24 @@ class GamesController < ApplicationController
             id: 1,
             description: "Prius",
             outcome: {
-              car: "prius"
+              car: "prius",
+              cost: 500
             }
           },
           {
             id: 2,
             description: "Camry",
             outcome: {
-              car: "camry"
+              car: "camry",
+              cost: 100
             }
           },
           {
             id: 3,
             description: "Volt",
             outcome: {
-              car: "volt"
+              car: "volt",
+              cost: 700
             }
           }
         ]
@@ -101,6 +105,14 @@ class GamesController < ApplicationController
             description: "Wait for help",
             outcome: {
               cost: 2,
+              environment: 3
+            }
+          },
+          {
+            id: 2,
+            description: "Wait for help",
+            outcome: {
+              cost: 200000,
               environment: 3
             }
           }
