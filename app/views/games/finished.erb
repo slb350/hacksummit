@@ -5,6 +5,10 @@
 			<p>Sorry <%= @player[:name] %>!</p>
 			<p>After <%= @player[:completed_choices].length %> days on the road, you don't have enough money to continue.</p>
 			<%= link_to "Give it Another Go", welcome_path, {class: "button red radius"}  %>
+			<div class="right">
+				<a target="_blank" href="https://twitter.com/share?text=I made it to day <%= @player[:completed_choices] %>! How far can you make it?"><i class="fa fa-twitter-square"></i></a>
+				<a onclick="FB.ui({method: 'feed', link: 'http://www.aninconvenientapp.com/', caption: 'I made it to day <%= @player[:completed_choices] %>! How far can you make it?'}, function(response){});"><i class="fa fa-facebook-square"></i></a>
+			</div>
 		</div>
 	</div>
 	<div class="small-12 medium-4 columns">
@@ -22,6 +26,10 @@
 			<p>You made it to New York with $<%= @player[:money] %> left. But keep in mind, this is about more than just you. The decisions you made will have lasting effects on all of the future generations.</p>
 			<p>To give you the chance to see what those effects might be, try playing as the next generation!</p>
 			<%= link_to "Proceed to the next generation", welcome_path, {class: "button red radius"}  %>
+			<div class="right">
+				<a target="_blank" href="https://twitter.com/share?text=I made it to New York with <%= @player[:money] %> left! How far can you make it?"><i class="fa fa-twitter-square"></i></a>
+				<a onclick="FB.ui({method: 'feed', link: 'http://www.aninconvenientapp.com/', caption: 'I made it to New York with <%= @player[:money] %> left! How far can you make it?'}, function(response){});"><i class="fa fa-facebook-square"></i></a>
+			</div>
 		</div>
 	</div>
 	<div class="small-12 medium-4 columns">
@@ -31,3 +39,20 @@
 		</div>
 	</div>
 <% end %>
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '780321872007889',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>

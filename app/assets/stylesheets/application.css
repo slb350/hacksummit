@@ -102,6 +102,10 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 	background-color:#FF4E5B;
 	font-family: 'Lemon'
 }
+i.fa-facebook-square, i.fa-twitter-square
+{
+	font-size: 3.5em;
+}
 .leaflet-clickable, .leaflet-container
 {
 	cursor:	default;
