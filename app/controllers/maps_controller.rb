@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  def show
-    @player = player
+  def index
+    @player = current_player
   end
 end

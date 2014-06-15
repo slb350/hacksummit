@@ -1,6 +1,6 @@
 class ChoicesController < ApplicationController
   def new
-    @player = player
+    @player = current_player
     @choice = @player[:pending_choices].first
 
     @environment = OpenStruct.new sea_level: 2,
@@ -13,7 +13,7 @@ class ChoicesController < ApplicationController
   end
 
   def create
-    @player = player
+    @player = current_player
     choice = @player[:pending_choices].unshift
     selected_option =
       choice[:options].select{|o| o[:id] == params[:choice_option]}.first
@@ -23,6 +23,7 @@ class ChoicesController < ApplicationController
     choice[:selected_option] = selected_option
     @player[:completed_choices].push choice
 
+    store_player(@player)
     if @player[:money] <= 0
       # Lose game if player money is less than 0?
       puts "game over dude"

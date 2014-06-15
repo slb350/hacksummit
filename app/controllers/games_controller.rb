@@ -24,6 +24,7 @@ class GamesController < ApplicationController
 
     # now persist player
     store_player(player)
+    redirect_to maps_path(player_id: player[:id])
   end
 
   protected
