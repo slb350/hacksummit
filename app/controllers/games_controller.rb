@@ -21,6 +21,7 @@ class GamesController < ApplicationController
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
     player[:money] = 100
+    player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
     player[:miles_remaining] = player[:total_miles]
     player[:pending_choices] = choices
@@ -39,7 +40,7 @@ class GamesController < ApplicationController
         location: {
           name: "San Francisco, CA",
           lat: "37.8",
-          long: "122.4",
+          long: "-122.4",
           mileage: 0
         },
         description: "Choose your car",
@@ -70,8 +71,8 @@ class GamesController < ApplicationController
       {
         location: {
           name: "Las Vegas, NV",
-          lat: "37.8",
-          long: "122.4",
+          lat: "36.1",
+          long: "-115.2",
           mileage: 100
         },
         description: "Your car is broken down WHAT DO YOU DO",
@@ -80,7 +81,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              resource: -20,
+              money: -20,
               environment: 3
             }
           }
@@ -89,8 +90,8 @@ class GamesController < ApplicationController
       {
         location: {
           name: "Denver, CO",
-          lat: "37.8",
-          long: "122.4",
+          lat: "39.7",
+          long: "-105",
           mileage: 250
         },
         description: "Your car is broken down WHAT DO YOU DO",
@@ -99,7 +100,45 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              resource: -2,
+              money: -2,
+              environment: 3
+            }
+          }
+        ]
+      },
+      {
+        location: {
+          name: "Chicago, IL",
+          lat: "41.2",
+          long: "-87.6",
+          mileage: 250
+        },
+        description: "Your car is broken down WHAT DO YOU DO",
+        options: [
+          {
+            id: 1,
+            description: "Wait for help",
+            outcome: {
+              money: -2,
+              environment: 3
+            }
+          }
+        ]
+      },
+      {
+        location: {
+          name: "Pittsburg, PA",
+          lat: "40.3",
+          long: "-76.9",
+          mileage: 250
+        },
+        description: "Your car is broken down WHAT DO YOU DO",
+        options: [
+          {
+            id: 1,
+            description: "Wait for help",
+            outcome: {
+              money: -2,
               environment: 3
             }
           }
@@ -108,8 +147,8 @@ class GamesController < ApplicationController
       {
         location: {
           name: "New York, NY",
-          lat: "37.8",
-          long: "122.4",
+          lat: "40.7",
+          long: "-74",
           mileage: 250
         },
         description: "Your car is broken down WHAT DO YOU DO",
@@ -118,7 +157,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              resource: -2,
+              money: -2,
               environment: 3
             }
           }
