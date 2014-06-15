@@ -2,7 +2,7 @@ set :stage, :production
 set :branch, 'master'
 set :rails_env, 'production'
 
-server 'aninconvenientapp.com', user: 'steve', roles: %w{web app db}
+server '162.243.154.56', user: 'steve', roles: %w{web app db}
 
  set :ssh_options, {
    forward_agent: true,
