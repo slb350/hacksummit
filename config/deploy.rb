@@ -16,7 +16,7 @@ namespace :deploy do
 desc 'Restart Rails Services'
   task :rails_restart do
     on roles(:all), in: :sequence, wait: 5 do
-      command "cd /home/#{fetch(:user)/rails.sh}"
+     execute "cd /home/#{fetch(:user)/; ./rails.sh}"
     end
   end
 
