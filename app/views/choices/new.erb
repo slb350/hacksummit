@@ -1,0 +1,9 @@
+%p <%= @choice[:description] %>
+<%= form_tag("/choices", method: "post") do %>
+  <% @choice[:options].each do |option| %>
+    <%= radio_button_tag(:choice_option, option[:number]) %>
+    <%= label_tag("choice_option_#{option[:number]}", option[:description]) %>
+    <br/>
+  <% end %>
+  <%= submit_tag("Submit") %>
+<% end %>
