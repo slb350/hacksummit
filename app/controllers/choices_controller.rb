@@ -25,6 +25,7 @@ class ChoicesController < ApplicationController
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
     @player[:money] -= selected_option[:outcome][:cost] if selected_option[:outcome][:cost]
+    @player[:money] -= @player[:car][:gas_cost] if @player[:car]
     @player[:miles_remaining] -= choice[:location][:mileage]
     @player[:environment] += selected_option[:outcome][:environment] if selected_option[:outcome][:environment]
     @player[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]
@@ -33,9 +34,9 @@ class ChoicesController < ApplicationController
 
     store_player(@player)
     if @player[:pending_choices].count == 0
-      redirect_to("/finished", player_id: @player[:id])
+      redirect_to(finished_path player_id: @player[:id])
     else
-      redirect_to(new_choice_path(player_id: @player[:id]))
+      redirect_to(new_choice_path player_id: @player[:id])
     end
   end
 
@@ -45,19 +46,19 @@ class ChoicesController < ApplicationController
     [
       {
         description: "You got a flat tire!",
-        cost: 100
+        cost: 500
       },
       {
         description: "Storms slow you down!",
-        cost: 100
+        cost: 500
       },
       {
         description: "Accident slows you down!",
-        cost: 100
+        cost: 500
       },
       {
         description: "Gas prices spike!",
-        cost: 100
+        cost: 500
       }
     ].sample
   end

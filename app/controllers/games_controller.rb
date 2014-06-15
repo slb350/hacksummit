@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   end
 
   def finished
+    @player = current_player
   end
 
   def new
@@ -20,7 +21,7 @@ class GamesController < ApplicationController
     player[:id] = SecureRandom.uuid
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
-    player[:starting_money] = 5000
+    player[:starting_money] = 1000
     player[:money] = player[:starting_money]
     player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
@@ -42,7 +43,7 @@ class GamesController < ApplicationController
           name: "San Francisco, CA",
           lat: "37.8",
           long: "-122.4",
-          mileage: 0
+          mileage: 575
         },
         description: "Choose your car",
         options: [
@@ -50,24 +51,33 @@ class GamesController < ApplicationController
             id: 1,
             description: "Prius",
             outcome: {
-              car: "prius",
-              cost: 2700
+              car: {
+                name: "prius",
+                gas_cost: 20
+              },
+              cost: 200
             }
           },
           {
             id: 2,
             description: "Camry",
             outcome: {
-              car: "camry",
-              cost: 1000
+              car: {
+                name: "camry",
+                gas_cost: 75
+              },
+              cost: 150
             }
           },
           {
             id: 3,
             description: "Volt",
             outcome: {
-              car: "volt",
-              cost: 4990
+              car: {
+                name: "volt",
+                gas_cost: 0
+              },
+              cost: 400
             }
           }
         ]
@@ -77,7 +87,7 @@ class GamesController < ApplicationController
           name: "Las Vegas, NV",
           lat: "36.1",
           long: "-115.2",
-          mileage: 575
+          mileage: 750
         },
         description: "You only brought enough water for one day",
         options: [
@@ -112,7 +122,7 @@ class GamesController < ApplicationController
           name: "Denver, CO",
           lat: "39.7",
           long: "-105",
-          mileage: 750
+          mileage: 250
         },
         description: "It's dinner time, and you've been driving for six hours straight",
         options: [
@@ -147,7 +157,7 @@ class GamesController < ApplicationController
           name: "Chicago, IL",
           lat: "41.2",
           long: "-87.6",
-          mileage: 250
+          mileage: 1450
         },
         description: "Where do you stay tonight?",
         options: [
@@ -190,7 +200,7 @@ class GamesController < ApplicationController
           name: "Pittsburg, PA",
           lat: "40.3",
           long: "-76.9",
-          mileage: 1450
+          mileage: 700
         },
         description: "Your car is broken down WHAT DO YOU DO",
         options: [
