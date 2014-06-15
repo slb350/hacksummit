@@ -37,9 +37,13 @@ class GamesController < ApplicationController
           {
             description: "Wait for help",
             impact: {
-              food: -5,
-              gas: 10,
-              sea_level: 0.1
+              resources: {
+                food: -5,
+                gas: 10
+              },
+              environment: {
+                sea_level: 0.1
+              }
             }
           }
         ]
