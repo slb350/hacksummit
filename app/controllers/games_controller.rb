@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   def welcome
     @parent_session_id = params[:parent_session_id]
     if @parent_session_id
-      redirect_to new_game_path, parent_session_id: @parent_session_id and return
+      redirect_to new_game_path(parent_session_id: @parent_session_id) and return
     end
   end
 
@@ -15,12 +15,6 @@ class GamesController < ApplicationController
   end
 
   def new
-    @cars = [
-      OpenStruct.new(name: "Prius"),
-      OpenStruct.new(name: "Camry"),
-      OpenStruct.new(name: "Volt")
-    ]
-
     @parent_session_id = params[:parent_session_id]
     @parent_session = get_session(params[:parent_session_id]) unless params[:parent_session_id].to_s == ""
   end
