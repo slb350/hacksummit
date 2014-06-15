@@ -32,7 +32,7 @@ class GamesController < ApplicationController
     [
       {
         location: {
-          name: "San Francisco",
+          name: "San Francisco, CA",
           lat: "37.8",
           long: "122.4",
           mileage: 0
@@ -50,7 +50,7 @@ class GamesController < ApplicationController
       },
       {
         location: {
-          name: "San Francisco",
+          name: "Las Vegas, NV",
           lat: "37.8",
           long: "122.4",
           mileage: 100
@@ -68,7 +68,25 @@ class GamesController < ApplicationController
       },
       {
         location: {
-          name: "San Francisco",
+          name: "Denver, CO",
+          lat: "37.8",
+          long: "122.4",
+          mileage: 250
+        },
+        description: "Your car is broken down WHAT DO YOU DO",
+        options: [
+          {
+            description: "Wait for help",
+            impact: {
+              resource: -2,
+              environment: 3
+            }
+          }
+        ]
+      },
+      {
+        location: {
+          name: "New York, NY",
           lat: "37.8",
           long: "122.4",
           mileage: 250

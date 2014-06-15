@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  def index
+  def show
     @current_user = current_user
   end
 end
