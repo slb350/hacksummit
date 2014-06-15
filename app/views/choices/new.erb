@@ -1,3 +1,15 @@
+<% if @out_of_money %>
+  <div id="out-of-money" class="reveal-modal" data-reveal>
+    <h2 style="color: #000;">You're out of money. EPIC FAIL</h2>
+    <%= link_to "Wrap it up", finished_path(player_id: @player[:id]) %>
+  </div>
+  <%= javascript_tag do %>
+    $(function() {
+      $("#out-of-money").foundation("reveal", "open");
+      console.log("bla");
+    });
+  <% end %>
+<% end %>
 <div class="small-12 medium-8">
   <div class="small-12 columns radius" id="map">
   </div>
@@ -18,7 +30,7 @@
         <div class="progress radius">
             <span class="meter" style="width:<%= @progress_percent %>%;"></span>
         </div>
-        <h6><%= @player[:miles_remaining] %> mi.</h6>
+        <h6><%= @player[:total_miles] - @player[:miles_remaining] %> / <%= @player[:total_miles]  %> mi.</h6>
       </div>
   </div>
   <div class="small-12 columns panel radius" id="planet-status" style="display:none;">
@@ -46,8 +58,12 @@
 	<%= form_tag("/choices", method: "post") do %>
 	  <%= hidden_field_tag :player_id, @player[:id]%>
 	  <% @choice[:options].each do |option| %>
-	    <%= radio_button_tag(:option_id, option[:id]) %>
-	    <%= label_tag("option_#{option[:id]}", option[:description], {for: 'option_id_' + option[:id].to_s}) %>
+          <% disabled = true if option[:outcome][:cost] and @player[:money] < option[:outcome][:cost] %>
+          <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
+          <% description = option[:description]  %>
+          <% description += " ($#{option[:outcome][:cost]})" if option[:outcome][:cost]%>
+          <% description += " (you don't have enough money!)" if disabled  %>
+          <%= label_tag "option_#{option[:id]}", description, {for: 'option_id_' + option[:id].to_s}%>
 	    <br/>
 	  <% end %>
 	  <%= submit_tag("Submit") %>

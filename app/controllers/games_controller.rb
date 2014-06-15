@@ -20,7 +20,8 @@ class GamesController < ApplicationController
     player[:id] = SecureRandom.uuid
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
-    player[:money] = 100
+    player[:starting_money] = 5000
+    player[:money] = player[:starting_money]
     player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
     player[:miles_remaining] = player[:total_miles]
@@ -49,21 +50,24 @@ class GamesController < ApplicationController
             id: 1,
             description: "Prius",
             outcome: {
-              car: "prius"
+              car: "prius",
+              cost: 2700
             }
           },
           {
             id: 2,
             description: "Camry",
             outcome: {
-              car: "camry"
+              car: "camry",
+              cost: 1000
             }
           },
           {
             id: 3,
             description: "Volt",
             outcome: {
-              car: "volt"
+              car: "volt",
+              cost: 4990
             }
           }
         ]
@@ -75,14 +79,30 @@ class GamesController < ApplicationController
           long: "-115.2",
           mileage: 100
         },
-        description: "Your car is broken down WHAT DO YOU DO",
+        description: "You only brought enough water for one day",
         options: [
           {
             id: 1,
-            description: "Wait for help",
+            description: "You can buy 2 whole cases of bottled water at Costco",
             outcome: {
               cost: 20,
               environment: 3
+            }
+          },
+          {
+            id: 2,
+            description: "You can buy a stainless steel water bottle",
+            outcome: {
+              cost: 20,
+              environment: 1
+            }
+          },
+          {
+            id: 3,
+            description: "You can buy one whole case of bottled water and use a stainless steel bottle when you can",
+            outcome: {
+              cost: 20,
+              environment: 2.5
             }
           }
         ]
@@ -94,14 +114,30 @@ class GamesController < ApplicationController
           long: "-105",
           mileage: 250
         },
-        description: "Your car is broken down WHAT DO YOU DO",
+        description: "It's dinner time, and you've been driving for six hours straight",
         options: [
           {
             id: 1,
-            description: "Wait for help",
+            description: "Do you pull over at one of the fast food joints?",
             outcome: {
-              cost: 2,
+              cost: 24,
               environment: 3
+            }
+          },
+          {
+            id: 2,
+            description: "Do you eat the food you packed earlier for your trip?",
+            outcome: {
+              cost: 14,
+              environment: 1
+            }
+          },
+          {
+            id: 3,
+            description: "Do you eat at a restaurant that is farm-to-table?",
+            outcome: {
+              cost: 50,
+              environment: 2
             }
           }
         ]
@@ -113,14 +149,38 @@ class GamesController < ApplicationController
           long: "-87.6",
           mileage: 250
         },
-        description: "Your car is broken down WHAT DO YOU DO",
+        description: "Where do you stay tonight?",
         options: [
           {
             id: 1,
-            description: "Wait for help",
+            description: "Stay at a hotel/motel",
             outcome: {
-              cost: 2,
+              cost: 130,
               environment: 3
+            }
+          },
+          {
+            id: 2,
+            description: "Start at a friend's home",
+            outcome: {
+              cost: 0,
+              environment: 1
+            }
+          },
+          {
+            id: 3,
+            description: "Stay at a local hostel",
+            outcome: {
+              cost: 50,
+              environment: 2
+            }
+          },
+          {
+            id: 4,
+            description: "Go camping",
+            outcome: {
+              cost: 25,
+              environment: 1
             }
           }
         ]
@@ -130,25 +190,6 @@ class GamesController < ApplicationController
           name: "Pittsburg, PA",
           lat: "40.3",
           long: "-76.9",
-          mileage: 250
-        },
-        description: "Your car is broken down WHAT DO YOU DO",
-        options: [
-          {
-            id: 1,
-            description: "Wait for help",
-            outcome: {
-              cost: 2,
-              environment: 3
-            }
-          }
-        ]
-      },
-      {
-        location: {
-          name: "New York, NY",
-          lat: "40.7",
-          long: "-74",
           mileage: 250
         },
         description: "Your car is broken down WHAT DO YOU DO",
