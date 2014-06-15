@@ -278,14 +278,33 @@ class GamesController < ApplicationController
           long: "-76.9",
           mileage: 700
         },
-        description: "Your car is broken down WHAT DO YOU DO",
+        description: "Your about to arrive in New York and return your rental car. How will you get around once you'r in the city?",
         options: [
-          {
+                    {
             id: 1,
-            description: "Wait for help",
+            description: "I'll be renting a bike",
             outcome: {
               cost: 100,
+              cost_impact: 1,
+              environment: 1
+            }
+          },
+          {
+            id: 2,
+            description: "I'll be taking taxis",
+            outcome: {
+              cost: 300,
+              cost_impact: 3,
               environment: 3
+            }
+          },
+          {
+            id: 3,
+            description: "I'll ride public transit",
+            outcome: {
+              cost: 75,
+              cost_impact: 2,
+              environment: 2
             }
           }
         ]
