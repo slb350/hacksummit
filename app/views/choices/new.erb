@@ -10,7 +10,7 @@
   <% end %>
 <% elsif @out_of_money %>
   <div id="out-of-money" class="reveal-modal" data-reveal>
-    <h2 style="color: #000;">You're out of money. EPIC FAIL</h2>
+    <h2 style="color: #000;">You're out of money.</h2>
     <%= link_to "Wrap it up", finished_path(session_id: @session[:id]) %>
   </div>
   <%= javascript_tag do %>
