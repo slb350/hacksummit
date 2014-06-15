@@ -1,10 +1,69 @@
-<p> <%= @choice[:description] %>
-<%= form_tag("/choices", method: "post") do %>
-  <%= hidden_field_tag :player_id, @player[:id]%>
-  <% @choice[:options].each do |option| %>
-    <%= radio_button_tag(:option_id, option[:id]) %>
-    <%= label_tag("option_#{option[:id]}", option[:description]) %>
-    <br/>
-  <% end %>
-  <%= submit_tag("Submit") %>
-<% end %>
+<div class="small-12 medium-8">
+  <div class="small-12 columns radius" id="map">
+  </div>
+</div>
+<div class="small-6 medium-4 columns" id="status">
+  <div class="small-12 columns panel radius" id="trip-status">
+    <h4 class="text-center">Trip Status</h4>
+    <hr />
+      <div id="money">
+        <h6>Money</h6>
+        <div class="progress radius">
+          <span class="meter" style="width:20%;background:green"></span>
+        </div>
+        <h6>$50</h6>
+      </div>
+      <div id="progress">
+        <h6>Progress</h6>
+        <div class="progress radius">
+          <span class="meter" style="width:60%;"></span>
+        </div>
+        <h6>3200 mi.</h6>
+      </div>
+  </div>
+  <div class="small-12 columns panel radius" id="planet-status" style="display:none;">
+    <h4 class="text-center">Planet Status</h4>
+    <hr />
+    <div class="meter-container small-4 columns">
+      <div class="progress radius">
+        <span class="meter"></span>
+      </div>
+    </div>
+    <div class="meter-container small-4 columns">
+      <div class="progress radius">
+        <span class="meter"></span>
+      </div>
+    </div>
+    <div class="meter-container small-4 columns">
+      <div class="progress radius">
+        <span class="meter"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="small-12 medium-8 columns panel left" id="questions">
+  	<p> <%= @choice[:description] %>
+	<%= form_tag("/choices", method: "post") do %>
+	  <%= hidden_field_tag :player_id, @player[:id]%>
+	  <% @choice[:options].each do |option| %>
+	    <%= radio_button_tag(:option_id, option[:id]) %>
+	    <%= label_tag("option_#{option[:id]}", option[:description]) %>
+	    <br/>
+	  <% end %>
+	  <%= submit_tag("Submit") %>
+	<% end %>
+</div>
+<script>
+  // Replace 'examples.map-i87786ca' with your map id.
+  var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/jcmorrow.ih0mmobh/{z}/{x}/{y}.png', {
+      attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+  });
+
+  var map = L.map('map', {scrollWheelZoom:false, doubleClickZoom:false, boxZoom:false, touchZoom:false, keyboard:false, dragging:false})
+      .addLayer(mapboxTiles)
+      .setView([37.7833, -122.4167], 10);
+  var playerIcon = L.divIcon({className:'player-icon'});
+  var playerMarker = L.marker([37.7833, -122.4167], {icon:playerIcon}).addTo(map);
+  var destinations = [L.marker([36.1215, -115.1739]), L.marker([39.7392, -104.9847]), L.marker([41.8819, 87.6278]), L.marker([40.2697, 76.8756])]
+  var path = L.polyline(destinations, {color:'red'});
+</script>

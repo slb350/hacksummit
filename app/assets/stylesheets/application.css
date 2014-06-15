@@ -20,7 +20,7 @@ body
 	background-color: #661111;
 	color:#FFF;
 }
-h1, h2, h3, h4, h5, h6, .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6
+h1, h2, h3, h4, h5, h6, .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, label
 {
 	color:#FFF;
 }
