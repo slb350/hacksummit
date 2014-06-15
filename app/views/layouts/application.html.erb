@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= javascript_tag do %>
+  window.player = <%= raw @player.to_json if @player  %>
+<% end %>
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
