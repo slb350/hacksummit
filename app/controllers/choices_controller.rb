@@ -46,19 +46,19 @@ class ChoicesController < ApplicationController
     [
       {
         description: "You got a flat tire!",
-        cost: 500
+        cost: 75
       },
       {
         description: "Storms slow you down!",
-        cost: 500
+        cost: 75
       },
       {
         description: "Accident slows you down!",
-        cost: 500
+        cost: 75
       },
       {
         description: "Gas prices spike!",
-        cost: 500
+        cost: 75
       }
     ].sample
   end

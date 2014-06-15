@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     player[:id] = SecureRandom.uuid
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
-    player[:starting_money] = 1000
+    player[:starting_money] = 600
     player[:money] = player[:starting_money]
     player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
@@ -95,7 +95,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "You can buy 2 whole cases of bottled water at Costco",
             outcome: {
-              cost: 20,
+              cost: 25,
               environment: 3
             }
           },
@@ -103,7 +103,7 @@ class GamesController < ApplicationController
             id: 2,
             description: "You can buy a stainless steel water bottle",
             outcome: {
-              cost: 20,
+              cost: 75,
               environment: 1
             }
           },
@@ -111,7 +111,7 @@ class GamesController < ApplicationController
             id: 3,
             description: "You can buy one whole case of bottled water and use a stainless steel bottle when you can",
             outcome: {
-              cost: 20,
+              cost: 100,
               environment: 2.5
             }
           }
@@ -130,7 +130,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Do you pull over at one of the fast food joints?",
             outcome: {
-              cost: 24,
+              cost: 45,
               environment: 3
             }
           },
@@ -138,7 +138,7 @@ class GamesController < ApplicationController
             id: 2,
             description: "Do you eat the food you packed earlier for your trip?",
             outcome: {
-              cost: 14,
+              cost: 24,
               environment: 1
             }
           },
@@ -146,7 +146,7 @@ class GamesController < ApplicationController
             id: 3,
             description: "Do you eat at a restaurant that is farm-to-table?",
             outcome: {
-              cost: 50,
+              cost: 150,
               environment: 2
             }
           }
@@ -165,7 +165,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Stay at a hotel/motel",
             outcome: {
-              cost: 130,
+              cost: 200,
               environment: 3
             }
           },
@@ -181,7 +181,7 @@ class GamesController < ApplicationController
             id: 3,
             description: "Stay at a local hostel",
             outcome: {
-              cost: 50,
+              cost: 60,
               environment: 2
             }
           },
@@ -189,7 +189,7 @@ class GamesController < ApplicationController
             id: 4,
             description: "Go camping",
             outcome: {
-              cost: 25,
+              cost: 35,
               environment: 1
             }
           }
@@ -208,7 +208,7 @@ class GamesController < ApplicationController
             id: 1,
             description: "Wait for help",
             outcome: {
-              cost: 2,
+              cost: 100,
               environment: 3
             }
           }
