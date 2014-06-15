@@ -7,9 +7,14 @@ class ChoicesController < ApplicationController
     @money_percent =
       (@session[:money].to_f / @session[:starting_money]).round(2)*100
 
+    @choice[:options].each do |o|
+      o[:outcome][:cost] = (o[:outcome][:cost] * (1 + (@session[:initial_environment].to_f / 100))).to_i
+    end
+
     costs = @choice[:options].map{|o| o[:outcome][:cost]}.reject{|c| !c}
-    if rand < 0.25 and @choice[:location][:type] != "start"
+    if rand < 0.75 and @choice[:location][:type] != "start"
       @event = random_event
+      @event[:cost] = (@event[:cost] * (1 + (@session[:initial_environment].to_f / 100))).to_i
       @session[:money] -= @event[:cost]
     end
     if costs.count > 0 and @session[:money] <= costs.min
