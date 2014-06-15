@@ -38,10 +38,6 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 {
 	background-color: #1CAAA2;
 }
-nav.top-bar
-{
-	border-bottom: 5px solid #474949;
-}
 #content
 {
 	margin-top:20px;
@@ -95,10 +91,11 @@ nav.top-bar
 	display:flex;
 	margin:auto;
 }
-.app-icon i
+.app-icon a
 {
 	margin: auto;
 	font-size: 7em;
+	color: #FF4E5B;
 }
 .button.red
 {

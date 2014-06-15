@@ -25,7 +25,7 @@ class GamesController < ApplicationController
     player[:id] = SecureRandom.uuid
     player[:name] = params[:player_name] || "Player 1"
     player[:color] = params[:player_color] || "#6E913F"
-    player[:starting_money] = 500
+    player[:starting_money] = 1000
     player[:money] = player[:starting_money]
     player[:environment] = 0
     player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
@@ -49,7 +49,7 @@ class GamesController < ApplicationController
           long: "-122.4",
           mileage: 575
         },
-        description: "Choose your car",
+        description: "First, you have to pick a rental car! Choose carefully, because you'll also be paying for gas each day depending on the fuel economy of your vehicle!",
         options: [
           {
             id: 1,
@@ -93,30 +93,38 @@ class GamesController < ApplicationController
           long: "-115.2",
           mileage: 750
         },
-        description: "You only brought enough water for one day",
-        options: [
+        description: "No one can drive all day (what is this a hackathon?), so it's time to find a place to crash. Where will you stay tonight?",
+                options: [
           {
             id: 1,
-            description: "You can buy 2 whole cases of bottled water at Costco",
+            description: "I'll just find a hotel.",
             outcome: {
-              cost: 25,
-              environment: 3
+              cost: 200,
+              environment: 4
             }
           },
           {
             id: 2,
-            description: "You can buy a stainless steel water bottle",
+            description: "Air B'n'B has yet to let me down!",
             outcome: {
-              cost: 75,
+              cost: 50,
               environment: 1
             }
           },
           {
             id: 3,
-            description: "You can buy one whole case of bottled water and use a stainless steel bottle when you can",
+            description: "I'll see if there's a local hostel at the next city.",
             outcome: {
-              cost: 100,
-              environment: 2.5
+              cost: 50,
+              environment: 2
+            }
+          },
+          {
+            id: 4,
+            description: "Let's go camping!",
+            outcome: {
+              cost: 75,
+              environment: 3
             }
           }
         ]
@@ -128,19 +136,19 @@ class GamesController < ApplicationController
           long: "-105",
           mileage: 250
         },
-        description: "It's dinner time, and you've been driving for six hours straight",
+        description: "It's dinner time, and you've been driving for six hours straight. It's time to eat, but where will you go?",
         options: [
           {
             id: 1,
-            description: "Do you pull over at one of the fast food joints?",
+            description: "McDonald's is fine. No use in being picky.",
             outcome: {
-              cost: 45,
+              cost: 10,
               environment: 3
             }
           },
           {
             id: 2,
-            description: "Do you eat the food you packed earlier for your trip?",
+            description: "I'll find a co-op and get some fresh groceries.",
             outcome: {
               cost: 24,
               environment: 1
@@ -148,9 +156,9 @@ class GamesController < ApplicationController
           },
           {
             id: 3,
-            description: "Do you eat at a restaurant that is farm-to-table?",
+            description: "There's a great farm-to-table restaurant at the next exit!",
             outcome: {
-              cost: 150,
+              cost: 50,
               environment: 2
             }
           }
@@ -163,38 +171,30 @@ class GamesController < ApplicationController
           long: "-87.6",
           mileage: 1450
         },
-        description: "Where do you stay tonight?",
+        description: "You're getting thirsty and you're out of water, what will you buy to drink?",
         options: [
           {
             id: 1,
-            description: "Stay at a hotel/motel",
+            description: "Buy 2 whole cases of bottled water at Costco",
             outcome: {
-              cost: 200,
+              cost: 10,
               environment: 3
             }
           },
           {
             id: 2,
-            description: "Start at a friend's home",
+            description: "Buy a stainless steel water bottle and fill it at the tap",
             outcome: {
-              cost: 0,
+              cost: 20,
               environment: 1
             }
           },
           {
             id: 3,
-            description: "Stay at a local hostel",
+            description: "Buy a 2 liter of soda instead",
             outcome: {
-              cost: 60,
-              environment: 2
-            }
-          },
-          {
-            id: 4,
-            description: "Go camping",
-            outcome: {
-              cost: 35,
-              environment: 1
+              cost: 5,
+              environment: 2.5
             }
           }
         ]

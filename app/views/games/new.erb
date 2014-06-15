@@ -8,7 +8,7 @@
 		  </div>
 		  <div class="small-3 columns">
 			  <%= label_tag(:player_color, "Car Color") %>
-			  <%= text_field_tag(:player_color) %>
+			  <%= text_field_tag(:player_color, "#FFFFFF") %>
 		  </div>
 		  <div class="text-center"><%= submit_tag("Hit the Road!", {class: "button red radius"}) %></div>
 		<% end %>
@@ -19,6 +19,8 @@
 		<ul>
 			<li>Starting Location: San Francisco, CA</li>
 			<li>Ending Location: New York, NY</li>
+			<li>Total Distance: 3,725 mi.</li>
+			<li>Starting money: $1,000</li>
 		</ul>
 	</div>
 </div>
