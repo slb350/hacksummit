@@ -1,0 +1,11 @@
+namespace :deploy do
+  namespace :symlink do
+    desc 'Symlink release dist to current'
+    task :release do
+      on roles(:all) do
+        execute :rm, '-rf', current_path
+        execute :ln, '-s', release_path.join('dist'), current_path
+      end
+    end
+  end
+end
