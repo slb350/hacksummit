@@ -23,7 +23,7 @@ class GamesController < ApplicationController
     player[:completed_choices] = []
 
     # now persist player
-    redis.set(player[:id], player.to_json)
+    store_player(player)
   end
 
   protected
