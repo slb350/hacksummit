@@ -4,6 +4,6 @@ pid "#{root}/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
 
-listen "/tmp/unicorn.cpt.sock"
+listen "/tmp/unicorn.aia.sock"
 worker_processes 2
 timeout 300
