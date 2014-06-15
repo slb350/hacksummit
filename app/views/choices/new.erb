@@ -87,7 +87,7 @@
 	});
 
 	//oriDomi because WHY THE FUCK NOT?!
-	setTimeout(function(){var foldedMap = new OriDomi(document.getElementById('map'));}, 2000);
+	//setTimeout(function(){var foldedMap = new OriDomi(document.getElementById('map'));}, 2000);
 	//foldedMap.foldUp();
 
 	var currentPosition = [window.player.pending_choices[0].location.lat, window.player.pending_choices[0].location.long];
@@ -110,6 +110,7 @@
 	{
 		destination_coords.push(L.latLng([choice.location.lat, choice.location.long]));
 	});
+	destination_coords.push(L.latLng(currentPosition));
 	//make the path
 	var path = L.polyline(destination_coords, {color:'#661111', opacity:'.8'}).addTo(map);
 </script>
