@@ -1,4 +1,14 @@
-<% if @out_of_money %>
+<% if @out_of_money && @event %>
+  <div id="event_finished" class="reveal-modal" data-reveal>
+      <h2 style="color: #000;"><%= @event[:description] %> It cost you $<%= @event[:cost] %>! Now you're out of money!</h2>
+      <%= link_to "Wrap it up", finished_path(player_id: @player[:id]) %>
+  </div>
+  <%= javascript_tag do %>
+    $(function() {
+      $("#event_finished").foundation("reveal", "open", {dismiss_modal_class: "close-reveal-modal"});
+    });
+  <% end %>
+<% elsif @out_of_money %>
   <div id="out-of-money" class="reveal-modal" data-reveal>
     <h2 style="color: #000;">You're out of money. EPIC FAIL</h2>
     <%= link_to "Wrap it up", finished_path(player_id: @player[:id]) %>
@@ -8,8 +18,7 @@
       $("#out-of-money").foundation("reveal", "open");
     });
   <% end %>
-<% end %>
-<% if @event %>
+<% elsif @event %>
   <div id="event" class="reveal-modal" data-reveal>
       <h2 style="color: #000;"><%= @event[:description] %> It cost you $<%= @event[:cost] %>!</h2>
     <a class="close-modal" onclick="$('#event').foundation('reveal', 'close')">Continue</a>
