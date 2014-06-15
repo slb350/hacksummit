@@ -70,14 +70,14 @@ nav.top-bar, .top-bar-section li:not(.has-form) a:not(.button)
 	border-bottom-left-radius: 5px;
 	border-top: none;
 }
-.player-icon
+.session-icon
 {
 	width:8px;
 	height:8px;
 	border-radius: 6px;
 	background-color:#332222;
 }
-.player-icon
+.session-icon
 {
 	font-size: 1.25em;
 	color:#332222;
