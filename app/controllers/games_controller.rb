@@ -24,7 +24,8 @@ class GamesController < ApplicationController
   def create
     choices = choice_template
 
-    @parent_session = get_session(params[:parent_session_id]) if params[:parent_session_id]
+    binding.pry
+    @parent_session = get_session(params[:parent_session_id]) unless params[:parent_session_id].to_s == ""
 
     session = {}
     session[:id] = SecureRandom.uuid
