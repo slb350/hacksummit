@@ -1,7 +1,7 @@
 <% if @out_of_money && @event %>
   <div id="event_finished" class="reveal-modal" data-reveal>
       <h2 style="color: #000;"><%= @event[:description] %> It cost you $<%= @event[:cost] %>! Now you're out of money!</h2>
-      <%= link_to "Wrap it up", finished_path(player_id: @player[:id]) %>
+      <%= link_to "Wrap it up", finished_path(session_id: @session[:id]) %>
   </div>
   <%= javascript_tag do %>
     $(function() {
@@ -11,7 +11,7 @@
 <% elsif @out_of_money %>
   <div id="out-of-money" class="reveal-modal" data-reveal>
     <h2 style="color: #000;">You're out of money. EPIC FAIL</h2>
-    <%= link_to "Wrap it up", finished_path(player_id: @player[:id]) %>
+    <%= link_to "Wrap it up", finished_path(session_id: @session[:id]) %>
   </div>
   <%= javascript_tag do %>
     $(function() {
@@ -42,15 +42,15 @@
         <div class="progress radius">
             <span class="meter" style="width:<%= @money_percent %>%;background:green"></span>
         </div>
-        <h6>$<%= @player[:money] %></h6>
+        <h6>$<%= @session[:money] %></h6>
       </div>
       <div id="progress">
         <h6>Progress</h6>
         <div class="progress radius">
             <span class="meter" style="width:<%= @progress_percent %>%;"></span>
         </div>
-        <h6><%= @player[:total_miles] - @player[:miles_remaining] %> / <%= @player[:total_miles]  %> mi.</h6>
-        <h6>Environmental Impact: <%= @player[:environment] %></h6>
+        <h6><%= @session[:total_miles] - @session[:miles_remaining] %> / <%= @session[:total_miles]  %> mi.</h6>
+        <h6>Environmental Impact: <%= @session[:environment] %></h6>
       </div>
   </div>
   <div class="small-12 columns panel radius" id="planet-status" style="display:none;">
@@ -76,9 +76,9 @@
 <div class="small-12 medium-8 columns panel left" id="questions">
   	<p> <%= @choice[:description] %>
 	<%= form_tag("/choices", method: "post") do %>
-	  <%= hidden_field_tag :player_id, @player[:id]%>
+	  <%= hidden_field_tag :session_id, @session[:id]%>
 	  <% @choice[:options].each do |option| %>
-          <% disabled = true if option[:outcome][:cost] and @player[:money] < option[:outcome][:cost] %>
+          <% disabled = true if option[:outcome][:cost] and @session[:money] < option[:outcome][:cost] %>
           <% description = option[:description]  %>
           <% description += " ($#{option[:outcome][:cost]})" if option[:outcome][:cost]%>
           <% description += " (you don't have enough money!)" if disabled  %>
@@ -101,23 +101,23 @@
 	//setTimeout(function(){var foldedMap = new OriDomi(document.getElementById('map'));}, 2000);
 	//foldedMap.foldUp();
 
-	var currentPosition = [window.player.pending_choices[0].location.lat, window.player.pending_choices[0].location.long];
+	var currentPosition = [window.session.pending_choices[0].location.lat, window.session.pending_choices[0].location.long];
 	//initialize the map in the #map div
 	var map = L.map('map', {scrollWheelZoom:false, doubleClickZoom:false, boxZoom:false, touchZoom:false, keyboard:false, dragging:false})
 	  .addLayer(mapboxTiles)
 	  .setView(currentPosition, 8);
 	//new leaflet icon
-	var playerIcon = L.divIcon({className:'player-icon'});
+	var sessionIcon = L.divIcon({className:'session-icon'});
 	//make new instance of that icon and add it to the map
-	var playerMarker = L.marker(currentPosition, {icon:playerIcon}).addTo(map);
-	//Change the player icon color and add the player's name to it.
-	$('.player-icon').append('<span style="position:relative;bottom:-10px;left:-10px;">'+window.player.name+'</span>');
-	$('.player-icon').css('color', window.player.color)
-	$('.player-icon').css('background-color', window.player.color)
+	var sessionMarker = L.marker(currentPosition, {icon:sessionIcon}).addTo(map);
+	//Change the session icon color and add the session's name to it.
+	$('.session-icon').append('<span style="position:relative;bottom:-10px;left:-10px;">'+window.session.name+'</span>');
+	$('.session-icon').css('color', window.session.color)
+	$('.session-icon').css('background-color', window.session.color)
 	//empty array to push bootstrapped rails data into
 	var destination_coords = [];
 	//pass those in, as LatFuckingLngs no less.
-	$.each(window.player.completed_choices, function(index, choice)
+	$.each(window.session.completed_choices, function(index, choice)
 	{
 		destination_coords.push(L.latLng([choice.location.lat, choice.location.long]));
 	});

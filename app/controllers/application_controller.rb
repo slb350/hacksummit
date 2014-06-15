@@ -3,16 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def current_player
-    player_id = params[:player_id]
-    get_player(player_id)
+  def current_session
+    session_id = params[:session_id]
+    get_session(session_id)
   end
 
-  def store_player(player)
-    $redis.set player[:id], player.to_json
+  def store_session(session)
+    $redis.set session[:id], session.to_json
   end
 
-  def get_player(player_id)
-    JSON.parse $redis.get(player_id), symbolize_names: true
+  def get_session(session_id)
+    JSON.parse $redis.get(session_id), symbolize_names: true
   end
 end

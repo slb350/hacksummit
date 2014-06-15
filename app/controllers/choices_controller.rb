@@ -1,43 +1,43 @@
 class ChoicesController < ApplicationController
   def new
-    @player = current_player
-    @choice = @player[:pending_choices].first
+    @session = current_session
+    @choice = @session[:pending_choices].first
     @progress_percent =
-      (1 - (@player[:miles_remaining].to_f / @player[:total_miles])).round(2)*100
+      (1 - (@session[:miles_remaining].to_f / @session[:total_miles])).round(2)*100
     @money_percent =
-      (@player[:money].to_f / @player[:starting_money]).round(2)*100
+      (@session[:money].to_f / @session[:starting_money]).round(2)*100
 
     costs = @choice[:options].map{|o| o[:outcome][:cost]}.reject{|c| !c}
     if rand < 0.25 and @choice[:location][:type] != "start"
       @event = random_event
-      @player[:money] -= @event[:cost]
+      @session[:money] -= @event[:cost]
     end
-    if costs.count > 0 and @player[:money] <= costs.min
+    if costs.count > 0 and @session[:money] <= costs.min
       @out_of_money = true
     end
-    store_player(@player)
+    store_session(@session)
   end
 
   def create
-    @player = current_player
-    choice = @player[:pending_choices].shift
+    @session = current_session
+    choice = @session[:pending_choices].shift
     selected_option =
       choice[:options].select{|o| o[:id] == params[:option_id].to_i}.first
     raise ArgumentError.new("Invalid option specified") unless selected_option
 
-    @player[:money] -= selected_option[:outcome][:cost] if selected_option[:outcome][:cost]
-    @player[:money] -= @player[:car][:gas_cost] if @player[:car]
-    @player[:miles_remaining] -= choice[:location][:mileage]
-    @player[:environment] += selected_option[:outcome][:environment] if selected_option[:outcome][:environment]
-    @player[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]
+    @session[:money] -= selected_option[:outcome][:cost] if selected_option[:outcome][:cost]
+    @session[:money] -= @session[:car][:gas_cost] if @session[:car]
+    @session[:miles_remaining] -= choice[:location][:mileage]
+    @session[:environment] += selected_option[:outcome][:environment] if selected_option[:outcome][:environment]
+    @session[:car] = selected_option[:outcome][:car] if selected_option[:outcome][:car]
     choice[:selected_option] = selected_option
-    @player[:completed_choices].push choice
+    @session[:completed_choices].push choice
 
-    store_player(@player)
-    if @player[:pending_choices].count == 0
-      redirect_to(finished_path player_id: @player[:id])
+    store_session(@session)
+    if @session[:pending_choices].count == 0
+      redirect_to(finished_path session_id: @session[:id])
     else
-      redirect_to(new_choice_path player_id: @player[:id])
+      redirect_to(new_choice_path session_id: @session[:id])
     end
   end
 

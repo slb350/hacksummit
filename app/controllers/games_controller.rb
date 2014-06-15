@@ -4,10 +4,11 @@ class GamesController < ApplicationController
   end
 
   def welcome
+    @parent_session_id = params[:parent_session_id]
   end
 
   def finished
-    @player = current_player
+    @session = current_session
   end
 
   def new
@@ -16,26 +17,31 @@ class GamesController < ApplicationController
       OpenStruct.new(name: "Camry"),
       OpenStruct.new(name: "Volt")
     ]
+
+    @parent_session_id = params[:parent_session_id]
   end
 
   def create
     choices = choice_template
 
-    player = {}
-    player[:id] = SecureRandom.uuid
-    player[:name] = params[:player_name] || "Player 1"
-    player[:color] = params[:player_color] || "#6E913F"
-    player[:starting_money] = 1000
-    player[:money] = player[:starting_money]
-    player[:environment] = 0
-    player[:total_miles] = choices.sum{|c| c[:location][:mileage] }
-    player[:miles_remaining] = player[:total_miles]
-    player[:pending_choices] = choices
-    player[:completed_choices] = []
+    binding.pry
+    @parent_session = get_session(params[:parent_session_id]) unless params[:parent_session_id].to_s == ""
 
-    # now persist player
-    store_player(player)
-    redirect_to new_choice_path(player_id: player[:id])
+    session = {}
+    session[:id] = SecureRandom.uuid
+    session[:name] = params[:session_name] || "Player 1"
+    session[:color] = params[:session_color] || "#6E913F"
+    session[:starting_money] = 1000
+    session[:money] = session[:starting_money]
+    session[:environment] = @parent_session.try(:[], :environment) || 0
+    session[:total_miles] = choices.sum{|c| c[:location][:mileage] }
+    session[:miles_remaining] = session[:total_miles]
+    session[:pending_choices] = choices
+    session[:completed_choices] = []
+
+    # now persist session
+    store_session(session)
+    redirect_to new_choice_path(session_id: session[:id])
   end
 
   protected
