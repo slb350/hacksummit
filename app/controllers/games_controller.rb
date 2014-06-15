@@ -37,13 +37,42 @@ class GamesController < ApplicationController
           {
             description: "Wait for help",
             impact: {
-              resources: {
-                food: -5,
-                gas: 10
-              },
-              environment: {
-                sea_level: 0.1
-              }
+              resource: -2,
+              environment: 3
+            }
+          }
+        ]
+      },
+      {
+        location: {
+          name: "San Francisco",
+          lat: "37.8",
+          long: "122.4"
+        },
+        description: "Your car is broken down WHAT DO YOU DO",
+        options: [
+          {
+            description: "Wait for help",
+            impact: {
+              resource: -2,
+              environment: 3
+            }
+          }
+        ]
+      },
+      {
+        location: {
+          name: "San Francisco",
+          lat: "37.8",
+          long: "122.4"
+        },
+        description: "Your car is broken down WHAT DO YOU DO",
+        options: [
+          {
+            description: "Wait for help",
+            impact: {
+              resource: -2,
+              environment: 3
             }
           }
         ]
