@@ -108,7 +108,8 @@ class GamesController < ApplicationController
             id: 1,
             description: "I'll just find a hotel.",
             outcome: {
-              cost: 200,
+              cost: 150,
+              cost_impact: 2,
               environment: 4
             }
           },
@@ -116,7 +117,8 @@ class GamesController < ApplicationController
             id: 2,
             description: "Air B'n'B has yet to let me down!",
             outcome: {
-              cost: 50,
+              cost: 75,
+              cost_impact: 1,
               environment: 1
             }
           },
@@ -124,7 +126,8 @@ class GamesController < ApplicationController
             id: 3,
             description: "I'll see if there's a local hostel at the next city.",
             outcome: {
-              cost: 50,
+              cost: 100,
+              cost_impact: 1.2,
               environment: 2
             }
           },
@@ -132,7 +135,8 @@ class GamesController < ApplicationController
             id: 4,
             description: "Let's go camping!",
             outcome: {
-              cost: 75,
+              cost: 50,
+              cost_impact: 1,
               environment: 3
             }
           }
@@ -151,7 +155,8 @@ class GamesController < ApplicationController
             id: 1,
             description: "McDonald's is fine. No use in being picky.",
             outcome: {
-              cost: 10,
+              cost: 50,
+              cost_impact: 3,
               environment: 3
             }
           },
@@ -159,7 +164,8 @@ class GamesController < ApplicationController
             id: 2,
             description: "I'll find a co-op and get some fresh groceries.",
             outcome: {
-              cost: 24,
+              cost: 75,
+              cost_impact: 2,
               environment: 1
             }
           },
@@ -167,7 +173,8 @@ class GamesController < ApplicationController
             id: 3,
             description: "There's a great farm-to-table restaurant at the next exit!",
             outcome: {
-              cost: 50,
+              cost: 125,
+              cost_impact: 2,
               environment: 2
             }
           }
@@ -186,7 +193,8 @@ class GamesController < ApplicationController
             id: 1,
             description: "Buy 2 whole cases of bottled water at Costco",
             outcome: {
-              cost: 10,
+              cost: 40,
+              cost_impact: 4,
               environment: 3
             }
           },
@@ -194,15 +202,17 @@ class GamesController < ApplicationController
             id: 2,
             description: "Buy a stainless steel water bottle and fill it at the tap",
             outcome: {
-              cost: 20,
+              cost: 80,
+              cost_impact: 2,
               environment: 1
             }
           },
           {
             id: 3,
-            description: "Buy a 2 liter of soda instead",
+            description: "Buy some 2 liters of soda instead",
             outcome: {
-              cost: 5,
+              cost: 60,
+              cost_impact: 2.5,
               environment: 2.5
             }
           }
