@@ -50,7 +50,6 @@
             <span class="meter" style="width:<%= @progress_percent %>%;"></span>
         </div>
         <h6><%= @session[:total_miles] - @session[:miles_remaining] %> / <%= @session[:total_miles]  %> mi.</h6>
-        <h6>Environmental Impact: <%= @session[:environment] %></h6>
       </div>
   </div>
   <div class="small-12 columns panel radius" id="planet-status" style="display:none;">
@@ -84,12 +83,17 @@
           <% description += " (you don't have enough money!)" if disabled  %>
           <%= label_tag "option_#{option[:id]}", {for: 'option_id_' + option[:id].to_s} do %>
               <%= radio_button_tag :option_id, option[:id], false, required: true, disabled: disabled %>
-              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
-                <span data-tooltip class="has-tip" title="<%= option[:environmental_impact_description]  %>">
+              <% if @session[:iteration] > 1 %>
+                  <span class="<%= 'previous-selection' if option[:id] == @previous_option_id  %>" style="<%= 'text-decoration: underline;' if option[:id] == @previous_option_id  %>">
               <% end %>
               <%= description %>
-              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
+              <% if @session[:iteration] > 1 %>
                 </span>
+              <% end %>
+              <% if option[:environmental_impact_description] && @session[:iteration] > 1 %>
+                <a class="has-tip" data-tooltip title="<%= option[:environmental_impact_description] %>">
+                  <i class="popover fa fa-question-circle"></i>
+                </a>
               <% end %>
           <% end %>
 	    <br/>

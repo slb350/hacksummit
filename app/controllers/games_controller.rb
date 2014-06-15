@@ -31,7 +31,8 @@ class GamesController < ApplicationController
       session[:color] = @parent_session[:color]
       session[:parent_session_id] = @parent_session[:id]
       session[:iteration] = @parent_session[:iteration] + 1
-      session[:initial_environment] = @parent_session[:environment]
+      # FOR DEMO - crank up environmental issues on second gen
+      session[:initial_environment] = @parent_session[:environment] * 2.5
     else
       session[:name] = params[:session_name]
       session[:color] = params[:session_color]
@@ -56,13 +57,13 @@ class GamesController < ApplicationController
   def choice_template
     [
       {
+        id: 1,
         location: {
           name: "San Francisco, CA",
           lat: "37.8",
           long: "-122.4",
           mileage: 575,
           type: "start"
-
         },
         description: "First, you have to pick a rental car! Choose carefully, because you'll also be paying for gas each day depending on the fuel economy of your vehicle!",
         options: [
@@ -102,6 +103,7 @@ class GamesController < ApplicationController
         ]
       },
       {
+        id: 2,
         location: {
           name: "Las Vegas, NV",
           lat: "36.1",
@@ -149,6 +151,7 @@ class GamesController < ApplicationController
         ]
       },
       {
+        id: 3,
         location: {
           name: "Denver, CO",
           lat: "39.7",
@@ -201,6 +204,7 @@ class GamesController < ApplicationController
         ]
       },
       {
+        id: 4,
         location: {
           name: "Chicago, IL",
           lat: "41.2",
@@ -272,6 +276,7 @@ class GamesController < ApplicationController
         ]
       },
       {
+        id: 5,
         location: {
           name: "Pittsburg, PA",
           lat: "40.3",
